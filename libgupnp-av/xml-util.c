@@ -1,9 +1,11 @@
 /*
  * Copyright (C) 2006, 2007 OpenedHand Ltd.
  * Copyright (C) 2007 Zeeshan Ali.
+ * Copyright (C) 2012 Intel Corporation
  *
  * Author: Jorn Baayen <jorn@openedhand.com>
  * Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+ * Author: Krzesimir Nowak <krnowak@openismus.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -63,9 +65,8 @@ xml_util_get_child_elements_by_name (xmlNode *node, const char *name)
        GList *children = NULL;
 
        for (node = node->children; node; node = node->next) {
-               if (node->name == NULL) {
+               if (node->name == NULL)
                        continue;
-               }
 
                if (strcmp (name, (char *) node->name) == 0) {
                        children = g_list_append (children, node);
@@ -91,6 +92,34 @@ xml_util_get_child_element_content (xmlNode    *node,
                 return NULL;
 
         return content;
+}
+
+guint
+xml_util_get_uint_child_element (xmlNode    *node,
+                                 const char *child_name,
+                                 guint       default_value)
+{
+        const char *content;
+
+        content = xml_util_get_child_element_content (node, child_name);
+        if (!content)
+                return default_value;
+
+        return strtoul (content, NULL, 0);
+}
+
+guint64
+xml_util_get_uint64_child_element (xmlNode    *node,
+                                   const char *child_name,
+                                   guint64     default_value)
+{
+        const char *content;
+
+        content = xml_util_get_child_element_content (node, child_name);
+        if (!content)
+                return default_value;
+
+        return g_ascii_strtoull (content, NULL, 0);
 }
 
 const char *
@@ -199,18 +228,30 @@ xml_util_set_child (xmlNode    *parent_node,
         xmlChar *escaped;
 
         node = xml_util_get_element (parent_node, name, NULL);
-        if (node == NULL) {
+        if (node == NULL)
                 node = xmlNewChild (parent_node,
                                     namespace,
                                     (unsigned char *) name,
                                     NULL);
-        }
 
         escaped = xmlEncodeSpecialChars (doc, (const unsigned char *) value);
         xmlNodeSetContent (node, escaped);
         xmlFree (escaped);
 
         return node;
+}
+
+void
+xml_util_unset_child (xmlNode    *parent_node,
+                      const char *name)
+{
+        xmlNode *node;
+
+        node = xml_util_get_element (parent_node, name, NULL);
+        if (node != NULL) {
+                xmlUnlinkNode (node);
+                xmlFreeNode (node);
+        }
 }
 
 gboolean
@@ -234,3 +275,139 @@ xml_util_verify_attribute_is_boolean (xmlNode    *node,
                g_ascii_strcasecmp (str, "1") == 0;
 }
 
+char *
+xml_util_get_child_string (xmlNode    *parent_node,
+                           xmlDoc     *doc,
+                           const char *name)
+{
+        xmlBuffer *buffer;
+        char      *ret;
+        xmlNode   *node;
+
+        node = xml_util_get_element (parent_node, name, NULL);
+        if (!node)
+                return NULL;
+
+        buffer = xmlBufferCreate ();
+        xmlNodeDump (buffer,
+                     doc,
+                     node,
+                     0,
+                     0);
+        ret = g_strndup ((char *) xmlBufferContent (buffer),
+                         xmlBufferLength (buffer));
+        xmlBufferFree (buffer);
+
+        return ret;
+}
+
+gboolean
+xml_util_node_deep_equal (xmlNode *first,
+                          xmlNode *second)
+{
+        GHashTable *first_attributes;
+        xmlAttr *attribute;
+        gboolean equal;
+
+        if (first == NULL && second == NULL)
+                return TRUE;
+        if (first == NULL || second == NULL)
+                return FALSE;
+
+        if (xmlStrcmp (first->name, second->name))
+                return FALSE;
+
+        equal = FALSE;
+        first_attributes = xml_util_get_attributes_map (first);
+        /* compare attributes */
+        for (attribute = second->properties;
+             attribute != NULL;
+             attribute = attribute->next) {
+                const xmlChar *value = NULL;
+                const xmlChar *key = attribute->name;
+
+                if (g_hash_table_lookup_extended (first_attributes,
+                                                  key,
+                                                  NULL,
+                                                  (gpointer *) &value))
+                        if (!xmlStrcmp (value, attribute->children->content)) {
+                                g_hash_table_remove (first_attributes, key);
+
+                                continue;
+                        }
+
+                goto out;
+        }
+
+        if (g_hash_table_size (first_attributes))
+                goto out;
+
+        /* compare content */
+        if (xmlStrcmp (first->content, second->content))
+                goto out;
+        equal = TRUE;
+ out:
+        g_hash_table_unref (first_attributes);
+        if (equal) {
+                xmlNode *first_child;
+                xmlNode *second_child;
+
+                for (first_child = first->children,
+                     second_child = second->children;
+                     first_child != NULL && second_child != NULL;
+                     first_child = first_child->next,
+                     second_child = second_child->next)
+                        if (!xml_util_node_deep_equal (first_child, second_child))
+                                return FALSE;
+                if (first_child != NULL || second_child != NULL)
+                        return FALSE;
+        }
+
+        return equal;
+}
+
+xmlNode *
+xml_util_find_node (xmlNode *haystack,
+                    xmlNode *needle)
+{
+        xmlNodePtr iter;
+
+        if (xml_util_node_deep_equal (haystack, needle))
+                return haystack;
+
+        for (iter = haystack->children; iter != NULL; iter = iter->next) {
+                xmlNodePtr found_node = xml_util_find_node (iter, needle);
+
+                if (found_node != NULL)
+                        return found_node;
+        }
+
+        return NULL;
+}
+
+xmlNode *
+xml_util_copy_node (xmlNode *node)
+{
+        xmlNode *dup = xmlCopyNode (node, 1);
+
+        /* TODO: remove useless namespace definition. */
+
+        return dup;
+}
+
+GHashTable *
+xml_util_get_attributes_map (xmlNode *node)
+{
+        xmlAttr *attribute;
+        GHashTable *attributes_map = g_hash_table_new (g_str_hash,
+                                                       g_str_equal);
+
+        for (attribute = node->properties;
+             attribute != NULL;
+             attribute = attribute->next)
+                g_hash_table_insert (attributes_map,
+                                     (gpointer) attribute->name,
+                                     (gpointer) attribute->children->content);
+
+        return attributes_map;
+}

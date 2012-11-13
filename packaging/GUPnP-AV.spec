@@ -7,16 +7,17 @@
 
 Name:       gupnp-av
 Summary:    GUPnP-AV is a collection of helpers for building UPnP AV applications
-Version:    0.10.3
+Version:    0.11.2
 Release:    0
 Group:      System/Libraries
 License:    LGPLv2+
 URL:        http://www.gupnp.org/
-Source0:    http://download.gnome.org/sources/%{name}/0.10/%{name}-%{version}.tar.gz
+Source0:    http://download.gnome.org/sources/%{name}/0.11/%{name}-%{version}.tar.gz
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
 BuildRequires:  pkgconfig(gupnp-1.0)
 BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 
 
@@ -88,5 +89,6 @@ rm -rf  $RPM_BUILD_ROOT%{_datadir}/gtk-doc
 %{_includedir}/gupnp-av-1.0/libgupnp-av
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/gupnp-av-1.0.pc
+%{_datadir}/gupnp-av/*.xsd
 # << files devel
 

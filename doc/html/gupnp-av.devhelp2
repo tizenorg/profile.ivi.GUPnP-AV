@@ -14,6 +14,8 @@
       <sub name="GUPnPLastChangeParser" link="GUPnPLastChangeParser.html"/>
       <sub name="GUPnPSearchCriteriaParser" link="GUPnPSearchCriteriaParser.html"/>
       <sub name="GUPnPProtocolInfo" link="GUPnPProtocolInfo.html"/>
+      <sub name="GUPnPFeature" link="GUPnPFeature.html"/>
+      <sub name="GUPnPFeatureListParser" link="GUPnPFeatureListParser.html"/>
     </sub>
     <sub name="Error Codes" link="ch02.html">
       <sub name="Error codes" link="gupnp-av-Error-codes.html"/>
@@ -38,7 +40,7 @@
     <keyword type="function" name="gupnp_didl_lite_object_get_parent_id ()" link="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-get-parent-id"/>
     <keyword type="function" name="gupnp_didl_lite_object_get_restricted ()" link="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-get-restricted"/>
     <keyword type="function" name="gupnp_didl_lite_object_get_title ()" link="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-get-title"/>
-    <keyword type="function" name="gupnp_didl_lite_object_get_creator ()" link="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-get-creator" deprecated="0.5.3: Use #gupnp_didl_lite_object_get_creators instead."/>
+    <keyword type="function" name="gupnp_didl_lite_object_get_creator ()" link="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-get-creator"/>
     <keyword type="function" name="gupnp_didl_lite_object_get_artist ()" link="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-get-artist" deprecated="0.5.3: Use #gupnp_didl_lite_object_get_artists instead."/>
     <keyword type="function" name="gupnp_didl_lite_object_get_author ()" link="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-get-author" deprecated="0.5.3: Use #gupnp_didl_lite_object_get_authors instead."/>
     <keyword type="function" name="gupnp_didl_lite_object_get_creators ()" link="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-get-creators"/>
@@ -63,7 +65,7 @@
     <keyword type="function" name="gupnp_didl_lite_object_set_parent_id ()" link="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-set-parent-id"/>
     <keyword type="function" name="gupnp_didl_lite_object_set_restricted ()" link="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-set-restricted"/>
     <keyword type="function" name="gupnp_didl_lite_object_set_title ()" link="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-set-title"/>
-    <keyword type="function" name="gupnp_didl_lite_object_set_creator ()" link="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-set-creator" deprecated="0.5.3: Use #gupnp_didl_lite_object_add_creator instead."/>
+    <keyword type="function" name="gupnp_didl_lite_object_set_creator ()" link="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-set-creator"/>
     <keyword type="function" name="gupnp_didl_lite_object_set_artist ()" link="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-set-artist" deprecated="0.5.3: Use #gupnp_didl_lite_object_add_artist instead."/>
     <keyword type="function" name="gupnp_didl_lite_object_set_author ()" link="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-set-author" deprecated="0.5.3: Use #gupnp_didl_lite_object_add_author instead."/>
     <keyword type="function" name="gupnp_didl_lite_object_add_creator ()" link="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-add-creator"/>
@@ -93,6 +95,7 @@
     <keyword type="property" name="The &quot;restricted&quot; property" link="GUPnPDIDLLiteObject.html#GUPnPDIDLLiteObject--restricted"/>
     <keyword type="property" name="The &quot;title&quot; property" link="GUPnPDIDLLiteObject.html#GUPnPDIDLLiteObject--title"/>
     <keyword type="property" name="The &quot;track-number&quot; property" link="GUPnPDIDLLiteObject.html#GUPnPDIDLLiteObject--track-number"/>
+    <keyword type="property" name="The &quot;update-id&quot; property" link="GUPnPDIDLLiteObject.html#GUPnPDIDLLiteObject--update-id"/>
     <keyword type="property" name="The &quot;upnp-class&quot; property" link="GUPnPDIDLLiteObject.html#GUPnPDIDLLiteObject--upnp-class"/>
     <keyword type="property" name="The &quot;upnp-namespace&quot; property" link="GUPnPDIDLLiteObject.html#GUPnPDIDLLiteObject--upnp-namespace"/>
     <keyword type="property" name="The &quot;write-status&quot; property" link="GUPnPDIDLLiteObject.html#GUPnPDIDLLiteObject--write-status"/>
@@ -112,8 +115,10 @@
     <keyword type="function" name="gupnp_didl_lite_container_add_search_class ()" link="GUPnPDIDLLiteContainer.html#gupnp-didl-lite-container-add-search-class"/>
     <keyword type="function" name="gupnp_didl_lite_container_add_search_class_full ()" link="GUPnPDIDLLiteContainer.html#gupnp-didl-lite-container-add-search-class-full"/>
     <keyword type="property" name="The &quot;child-count&quot; property" link="GUPnPDIDLLiteContainer.html#GUPnPDIDLLiteContainer--child-count"/>
+    <keyword type="property" name="The &quot;container-update-id&quot; property" link="GUPnPDIDLLiteContainer.html#GUPnPDIDLLiteContainer--container-update-id"/>
     <keyword type="property" name="The &quot;searchable&quot; property" link="GUPnPDIDLLiteContainer.html#GUPnPDIDLLiteContainer--searchable"/>
     <keyword type="property" name="The &quot;storage-used&quot; property" link="GUPnPDIDLLiteContainer.html#GUPnPDIDLLiteContainer--storage-used"/>
+    <keyword type="property" name="The &quot;total-deleted-child-count&quot; property" link="GUPnPDIDLLiteContainer.html#GUPnPDIDLLiteContainer--total-deleted-child-count"/>
     <keyword type="struct" name="GUPnPDIDLLiteItem" link="GUPnPDIDLLiteItem.html#GUPnPDIDLLiteItem-struct"/>
     <keyword type="function" name="gupnp_didl_lite_item_get_ref_id ()" link="GUPnPDIDLLiteItem.html#gupnp-didl-lite-item-get-ref-id"/>
     <keyword type="function" name="gupnp_didl_lite_item_set_ref_id ()" link="GUPnPDIDLLiteItem.html#gupnp-didl-lite-item-set-ref-id"/>
@@ -171,6 +176,7 @@
     <keyword type="property" name="The &quot;sample-freq&quot; property" link="GUPnPDIDLLiteResource.html#GUPnPDIDLLiteResource--sample-freq"/>
     <keyword type="property" name="The &quot;size&quot; property" link="GUPnPDIDLLiteResource.html#GUPnPDIDLLiteResource--size"/>
     <keyword type="property" name="The &quot;size64&quot; property" link="GUPnPDIDLLiteResource.html#GUPnPDIDLLiteResource--size64"/>
+    <keyword type="property" name="The &quot;update-count&quot; property" link="GUPnPDIDLLiteResource.html#GUPnPDIDLLiteResource--update-count"/>
     <keyword type="property" name="The &quot;uri&quot; property" link="GUPnPDIDLLiteResource.html#GUPnPDIDLLiteResource--uri"/>
     <keyword type="property" name="The &quot;width&quot; property" link="GUPnPDIDLLiteResource.html#GUPnPDIDLLiteResource--width"/>
     <keyword type="property" name="The &quot;xml-doc&quot; property" link="GUPnPDIDLLiteResource.html#GUPnPDIDLLiteResource--xml-doc"/>
@@ -246,6 +252,16 @@
     <keyword type="property" name="The &quot;network&quot; property" link="GUPnPProtocolInfo.html#GUPnPProtocolInfo--network"/>
     <keyword type="property" name="The &quot;play-speeds&quot; property" link="GUPnPProtocolInfo.html#GUPnPProtocolInfo--play-speeds"/>
     <keyword type="property" name="The &quot;protocol&quot; property" link="GUPnPProtocolInfo.html#GUPnPProtocolInfo--protocol"/>
+    <keyword type="struct" name="GUPnPFeature" link="GUPnPFeature.html#GUPnPFeature-struct"/>
+    <keyword type="function" name="gupnp_feature_get_name ()" link="GUPnPFeature.html#gupnp-feature-get-name"/>
+    <keyword type="function" name="gupnp_feature_get_version ()" link="GUPnPFeature.html#gupnp-feature-get-version"/>
+    <keyword type="function" name="gupnp_feature_get_object_ids ()" link="GUPnPFeature.html#gupnp-feature-get-object-ids"/>
+    <keyword type="property" name="The &quot;name&quot; property" link="GUPnPFeature.html#GUPnPFeature--name"/>
+    <keyword type="property" name="The &quot;object-ids&quot; property" link="GUPnPFeature.html#GUPnPFeature--object-ids"/>
+    <keyword type="property" name="The &quot;version&quot; property" link="GUPnPFeature.html#GUPnPFeature--version"/>
+    <keyword type="struct" name="GUPnPFeatureListParser" link="GUPnPFeatureListParser.html#GUPnPFeatureListParser-struct"/>
+    <keyword type="function" name="gupnp_feature_list_parser_new ()" link="GUPnPFeatureListParser.html#gupnp-feature-list-parser-new"/>
+    <keyword type="function" name="gupnp_feature_list_parser_parse_text ()" link="GUPnPFeatureListParser.html#gupnp-feature-list-parser-parse-text"/>
     <keyword type="macro" name="GUPNP_PROTOCOL_ERROR" link="gupnp-av-Error-codes.html#GUPNP-PROTOCOL-ERROR:CAPS"/>
     <keyword type="macro" name="GUPNP_SEARCH_CRITERIA_PARSER_ERROR" link="gupnp-av-Error-codes.html#GUPNP-SEARCH-CRITERIA-PARSER-ERROR:CAPS"/>
     <keyword type="enum" name="enum GUPnPProtocolError" link="gupnp-av-Error-codes.html#GUPnPProtocolError"/>

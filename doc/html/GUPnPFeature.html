@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GUPnPFeature</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
+<link rel="home" href="index.html" title="GUPnP A/V Reference Manual">
+<link rel="up" href="ch01.html" title="GUPnP A/V">
+<link rel="prev" href="GUPnPProtocolInfo.html" title="GUPnPProtocolInfo">
+<link rel="next" href="GUPnPFeatureListParser.html" title="GUPnPFeatureListParser">
+<meta name="generator" content="GTK-Doc V1.18 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="GUPnPProtocolInfo.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">GUPnP A/V Reference Manual</th>
+<td><a accesskey="n" href="GUPnPFeatureListParser.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#GUPnPFeature.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#GUPnPFeature.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#GUPnPFeature.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                   | 
+                  <a href="#GUPnPFeature.properties" class="shortcut">Properties</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="GUPnPFeature"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GUPnPFeature.top_of_page"></a>GUPnPFeature</span></h2>
+<p>GUPnPFeature — ContentDirectory feature</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="GUPnPFeature.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">                    <a class="link" href="GUPnPFeature.html#GUPnPFeature-struct" title="GUPnPFeature">GUPnPFeature</a>;
+const <span class="returnvalue">char</span> *        <a class="link" href="GUPnPFeature.html#gupnp-feature-get-name" title="gupnp_feature_get_name ()">gupnp_feature_get_name</a>              (<em class="parameter"><code><a class="link" href="GUPnPFeature.html" title="GUPnPFeature"><span class="type">GUPnPFeature</span></a> *feature</code></em>);
+const <span class="returnvalue">char</span> *        <a class="link" href="GUPnPFeature.html#gupnp-feature-get-version" title="gupnp_feature_get_version ()">gupnp_feature_get_version</a>           (<em class="parameter"><code><a class="link" href="GUPnPFeature.html" title="GUPnPFeature"><span class="type">GUPnPFeature</span></a> *feature</code></em>);
+const <span class="returnvalue">char</span> *        <a class="link" href="GUPnPFeature.html#gupnp-feature-get-object-ids" title="gupnp_feature_get_object_ids ()">gupnp_feature_get_object_ids</a>        (<em class="parameter"><code><a class="link" href="GUPnPFeature.html" title="GUPnPFeature"><span class="type">GUPnPFeature</span></a> *feature</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="GUPnPFeature.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  GObject
+   +----GUPnPFeature
+</pre>
+</div>
+<div class="refsect1">
+<a name="GUPnPFeature.properties"></a><h2>Properties</h2>
+<pre class="synopsis">
+  "<a class="link" href="GUPnPFeature.html#GUPnPFeature--name" title='The "name" property'>name</a>"                     <span class="type">gchar</span>*                : Read / Write / Construct Only
+  "<a class="link" href="GUPnPFeature.html#GUPnPFeature--object-ids" title='The "object-ids" property'>object-ids</a>"               <span class="type">gchar</span>*                : Read / Write / Construct Only
+  "<a class="link" href="GUPnPFeature.html#GUPnPFeature--version" title='The "version" property'>version</a>"                  <span class="type">gchar</span>*                : Read / Write / Construct Only
+</pre>
+</div>
+<div class="refsect1">
+<a name="GUPnPFeature.description"></a><h2>Description</h2>
+<p>
+<a class="link" href="GUPnPFeature.html" title="GUPnPFeature"><span class="type">GUPnPFeature</span></a> respresent a Feature element.
+</p>
+</div>
+<div class="refsect1">
+<a name="GUPnPFeature.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="GUPnPFeature-struct"></a><h3>GUPnPFeature</h3>
+<pre class="programlisting">typedef struct _GUPnPFeature GUPnPFeature;</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-feature-get-name"></a><h3>gupnp_feature_get_name ()</h3>
+<pre class="programlisting">const <span class="returnvalue">char</span> *        gupnp_feature_get_name              (<em class="parameter"><code><a class="link" href="GUPnPFeature.html" title="GUPnPFeature"><span class="type">GUPnPFeature</span></a> *feature</code></em>);</pre>
+<p>
+Get the name of the <em class="parameter"><code>feature</code></em>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>feature</code></em> :</span></p></td>
+<td><a class="link" href="GUPnPFeature.html" title="GUPnPFeature"><span class="type">GUPnPFeature</span></a></td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The name of the <em class="parameter"><code>feature</code></em>.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-feature-get-version"></a><h3>gupnp_feature_get_version ()</h3>
+<pre class="programlisting">const <span class="returnvalue">char</span> *        gupnp_feature_get_version           (<em class="parameter"><code><a class="link" href="GUPnPFeature.html" title="GUPnPFeature"><span class="type">GUPnPFeature</span></a> *feature</code></em>);</pre>
+<p>
+Get the version of the <em class="parameter"><code>feature</code></em>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>feature</code></em> :</span></p></td>
+<td><a class="link" href="GUPnPFeature.html" title="GUPnPFeature"><span class="type">GUPnPFeature</span></a></td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The version of the <em class="parameter"><code>feature</code></em>.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-feature-get-object-ids"></a><h3>gupnp_feature_get_object_ids ()</h3>
+<pre class="programlisting">const <span class="returnvalue">char</span> *        gupnp_feature_get_object_ids        (<em class="parameter"><code><a class="link" href="GUPnPFeature.html" title="GUPnPFeature"><span class="type">GUPnPFeature</span></a> *feature</code></em>);</pre>
+<p>
+Get the object IDs related to the <em class="parameter"><code>feature</code></em>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>feature</code></em> :</span></p></td>
+<td><a class="link" href="GUPnPFeature.html" title="GUPnPFeature"><span class="type">GUPnPFeature</span></a></td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The object IDs related to the <em class="parameter"><code>feature</code></em>.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1">
+<a name="GUPnPFeature.property-details"></a><h2>Property Details</h2>
+<div class="refsect2">
+<a name="GUPnPFeature--name"></a><h3>The <code class="literal">"name"</code> property</h3>
+<pre class="programlisting">  "name"                     <span class="type">gchar</span>*                : Read / Write / Construct Only</pre>
+<p>
+The name of this feature.
+</p>
+<p>Default value: NULL</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GUPnPFeature--object-ids"></a><h3>The <code class="literal">"object-ids"</code> property</h3>
+<pre class="programlisting">  "object-ids"               <span class="type">gchar</span>*                : Read / Write / Construct Only</pre>
+<p>
+The object IDs related to this feature.
+</p>
+<p>Default value: NULL</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GUPnPFeature--version"></a><h3>The <code class="literal">"version"</code> property</h3>
+<pre class="programlisting">  "version"                  <span class="type">gchar</span>*                : Read / Write / Construct Only</pre>
+<p>
+The version of this feature.
+</p>
+<p>Default value: NULL</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.18</div>
+</body>
+</html>

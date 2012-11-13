@@ -90,6 +90,7 @@
 <ANCHOR id="GUPnPDIDLLiteObject--restricted" href="gupnp-av/GUPnPDIDLLiteObject.html#GUPnPDIDLLiteObject--restricted">
 <ANCHOR id="GUPnPDIDLLiteObject--title" href="gupnp-av/GUPnPDIDLLiteObject.html#GUPnPDIDLLiteObject--title">
 <ANCHOR id="GUPnPDIDLLiteObject--track-number" href="gupnp-av/GUPnPDIDLLiteObject.html#GUPnPDIDLLiteObject--track-number">
+<ANCHOR id="GUPnPDIDLLiteObject--update-id" href="gupnp-av/GUPnPDIDLLiteObject.html#GUPnPDIDLLiteObject--update-id">
 <ANCHOR id="GUPnPDIDLLiteObject--upnp-class" href="gupnp-av/GUPnPDIDLLiteObject.html#GUPnPDIDLLiteObject--upnp-class">
 <ANCHOR id="GUPnPDIDLLiteObject--upnp-namespace" href="gupnp-av/GUPnPDIDLLiteObject.html#GUPnPDIDLLiteObject--upnp-namespace">
 <ANCHOR id="GUPnPDIDLLiteObject--write-status" href="gupnp-av/GUPnPDIDLLiteObject.html#GUPnPDIDLLiteObject--write-status">
@@ -116,8 +117,10 @@
 <ANCHOR id="gupnp-didl-lite-container-add-search-class-full" href="gupnp-av/GUPnPDIDLLiteContainer.html#gupnp-didl-lite-container-add-search-class-full">
 <ANCHOR id="GUPnPDIDLLiteContainer.property-details" href="gupnp-av/GUPnPDIDLLiteContainer.html#GUPnPDIDLLiteContainer.property-details">
 <ANCHOR id="GUPnPDIDLLiteContainer--child-count" href="gupnp-av/GUPnPDIDLLiteContainer.html#GUPnPDIDLLiteContainer--child-count">
+<ANCHOR id="GUPnPDIDLLiteContainer--container-update-id" href="gupnp-av/GUPnPDIDLLiteContainer.html#GUPnPDIDLLiteContainer--container-update-id">
 <ANCHOR id="GUPnPDIDLLiteContainer--searchable" href="gupnp-av/GUPnPDIDLLiteContainer.html#GUPnPDIDLLiteContainer--searchable">
 <ANCHOR id="GUPnPDIDLLiteContainer--storage-used" href="gupnp-av/GUPnPDIDLLiteContainer.html#GUPnPDIDLLiteContainer--storage-used">
+<ANCHOR id="GUPnPDIDLLiteContainer--total-deleted-child-count" href="gupnp-av/GUPnPDIDLLiteContainer.html#GUPnPDIDLLiteContainer--total-deleted-child-count">
 <ANCHOR id="GUPnPDIDLLiteItem" href="gupnp-av/GUPnPDIDLLiteItem.html">
 <ANCHOR id="GUPnPDIDLLiteItem.synopsis" href="gupnp-av/GUPnPDIDLLiteItem.html#GUPnPDIDLLiteItem.synopsis">
 <ANCHOR id="GUPnPDIDLLiteItem.object-hierarchy" href="gupnp-av/GUPnPDIDLLiteItem.html#GUPnPDIDLLiteItem.object-hierarchy">
@@ -196,6 +199,7 @@
 <ANCHOR id="GUPnPDIDLLiteResource--sample-freq" href="gupnp-av/GUPnPDIDLLiteResource.html#GUPnPDIDLLiteResource--sample-freq">
 <ANCHOR id="GUPnPDIDLLiteResource--size" href="gupnp-av/GUPnPDIDLLiteResource.html#GUPnPDIDLLiteResource--size">
 <ANCHOR id="GUPnPDIDLLiteResource--size64" href="gupnp-av/GUPnPDIDLLiteResource.html#GUPnPDIDLLiteResource--size64">
+<ANCHOR id="GUPnPDIDLLiteResource--update-count" href="gupnp-av/GUPnPDIDLLiteResource.html#GUPnPDIDLLiteResource--update-count">
 <ANCHOR id="GUPnPDIDLLiteResource--uri" href="gupnp-av/GUPnPDIDLLiteResource.html#GUPnPDIDLLiteResource--uri">
 <ANCHOR id="GUPnPDIDLLiteResource--width" href="gupnp-av/GUPnPDIDLLiteResource.html#GUPnPDIDLLiteResource--width">
 <ANCHOR id="GUPnPDIDLLiteResource--xml-doc" href="gupnp-av/GUPnPDIDLLiteResource.html#GUPnPDIDLLiteResource--xml-doc">
@@ -333,6 +337,28 @@
 <ANCHOR id="GUPnPProtocolInfo--network" href="gupnp-av/GUPnPProtocolInfo.html#GUPnPProtocolInfo--network">
 <ANCHOR id="GUPnPProtocolInfo--play-speeds" href="gupnp-av/GUPnPProtocolInfo.html#GUPnPProtocolInfo--play-speeds">
 <ANCHOR id="GUPnPProtocolInfo--protocol" href="gupnp-av/GUPnPProtocolInfo.html#GUPnPProtocolInfo--protocol">
+<ANCHOR id="GUPnPFeature" href="gupnp-av/GUPnPFeature.html">
+<ANCHOR id="GUPnPFeature.synopsis" href="gupnp-av/GUPnPFeature.html#GUPnPFeature.synopsis">
+<ANCHOR id="GUPnPFeature.object-hierarchy" href="gupnp-av/GUPnPFeature.html#GUPnPFeature.object-hierarchy">
+<ANCHOR id="GUPnPFeature.properties" href="gupnp-av/GUPnPFeature.html#GUPnPFeature.properties">
+<ANCHOR id="GUPnPFeature.description" href="gupnp-av/GUPnPFeature.html#GUPnPFeature.description">
+<ANCHOR id="GUPnPFeature.details" href="gupnp-av/GUPnPFeature.html#GUPnPFeature.details">
+<ANCHOR id="GUPnPFeature-struct" href="gupnp-av/GUPnPFeature.html#GUPnPFeature-struct">
+<ANCHOR id="gupnp-feature-get-name" href="gupnp-av/GUPnPFeature.html#gupnp-feature-get-name">
+<ANCHOR id="gupnp-feature-get-version" href="gupnp-av/GUPnPFeature.html#gupnp-feature-get-version">
+<ANCHOR id="gupnp-feature-get-object-ids" href="gupnp-av/GUPnPFeature.html#gupnp-feature-get-object-ids">
+<ANCHOR id="GUPnPFeature.property-details" href="gupnp-av/GUPnPFeature.html#GUPnPFeature.property-details">
+<ANCHOR id="GUPnPFeature--name" href="gupnp-av/GUPnPFeature.html#GUPnPFeature--name">
+<ANCHOR id="GUPnPFeature--object-ids" href="gupnp-av/GUPnPFeature.html#GUPnPFeature--object-ids">
+<ANCHOR id="GUPnPFeature--version" href="gupnp-av/GUPnPFeature.html#GUPnPFeature--version">
+<ANCHOR id="GUPnPFeatureListParser" href="gupnp-av/GUPnPFeatureListParser.html">
+<ANCHOR id="GUPnPFeatureListParser.synopsis" href="gupnp-av/GUPnPFeatureListParser.html#GUPnPFeatureListParser.synopsis">
+<ANCHOR id="GUPnPFeatureListParser.object-hierarchy" href="gupnp-av/GUPnPFeatureListParser.html#GUPnPFeatureListParser.object-hierarchy">
+<ANCHOR id="GUPnPFeatureListParser.description" href="gupnp-av/GUPnPFeatureListParser.html#GUPnPFeatureListParser.description">
+<ANCHOR id="GUPnPFeatureListParser.details" href="gupnp-av/GUPnPFeatureListParser.html#GUPnPFeatureListParser.details">
+<ANCHOR id="GUPnPFeatureListParser-struct" href="gupnp-av/GUPnPFeatureListParser.html#GUPnPFeatureListParser-struct">
+<ANCHOR id="gupnp-feature-list-parser-new" href="gupnp-av/GUPnPFeatureListParser.html#gupnp-feature-list-parser-new">
+<ANCHOR id="gupnp-feature-list-parser-parse-text" href="gupnp-av/GUPnPFeatureListParser.html#gupnp-feature-list-parser-parse-text">
 <ANCHOR id="gupnp-av-Error-codes" href="gupnp-av/gupnp-av-Error-codes.html">
 <ANCHOR id="gupnp-av-Error-codes.synopsis" href="gupnp-av/gupnp-av-Error-codes.html#gupnp-av-Error-codes.synopsis">
 <ANCHOR id="gupnp-av-Error-codes.description" href="gupnp-av/gupnp-av-Error-codes.html#gupnp-av-Error-codes.description">
@@ -343,6 +369,7 @@
 <ANCHOR id="GUPNP-PROTOCOL-ERROR-INVALID-SYNTAX:CAPS" href="gupnp-av/gupnp-av-Error-codes.html#GUPNP-PROTOCOL-ERROR-INVALID-SYNTAX:CAPS">
 <ANCHOR id="GUPNP-PROTOCOL-ERROR-OTHER:CAPS" href="gupnp-av/gupnp-av-Error-codes.html#GUPNP-PROTOCOL-ERROR-OTHER:CAPS">
 <ANCHOR id="GUPnPSearchCriteriaParserError" href="gupnp-av/gupnp-av-Error-codes.html#GUPnPSearchCriteriaParserError">
+<ANCHOR id="annotation-glossterm-allow-none" href="gupnp-av/annotation-glossary.html#annotation-glossterm-allow-none">
 <ANCHOR id="annotation-glossterm-element-type" href="gupnp-av/annotation-glossary.html#annotation-glossterm-element-type">
 <ANCHOR id="annotation-glossterm-transfer container" href="gupnp-av/annotation-glossary.html#annotation-glossterm-transfer container">
 <ANCHOR id="annotation-glossterm-transfer full" href="gupnp-av/annotation-glossary.html#annotation-glossterm-transfer full">

@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GUPnPFeatureListParser</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
+<link rel="home" href="index.html" title="GUPnP A/V Reference Manual">
+<link rel="up" href="ch01.html" title="GUPnP A/V">
+<link rel="prev" href="GUPnPFeature.html" title="GUPnPFeature">
+<link rel="next" href="ch02.html" title="Error Codes">
+<meta name="generator" content="GTK-Doc V1.18 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="GUPnPFeature.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">GUPnP A/V Reference Manual</th>
+<td><a accesskey="n" href="ch02.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#GUPnPFeatureListParser.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#GUPnPFeatureListParser.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#GUPnPFeatureListParser.object-hierarchy" class="shortcut">Object Hierarchy</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="GUPnPFeatureListParser"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GUPnPFeatureListParser.top_of_page"></a>GUPnPFeatureListParser</span></h2>
+<p>GUPnPFeatureListParser — FeatureList state variable XML parser</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="GUPnPFeatureListParser.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">                    <a class="link" href="GUPnPFeatureListParser.html#GUPnPFeatureListParser-struct" title="GUPnPFeatureListParser">GUPnPFeatureListParser</a>;
+<a class="link" href="GUPnPFeatureListParser.html" title="GUPnPFeatureListParser"><span class="returnvalue">GUPnPFeatureListParser</span></a> * <a class="link" href="GUPnPFeatureListParser.html#gupnp-feature-list-parser-new" title="gupnp_feature_list_parser_new ()">gupnp_feature_list_parser_new</a>  (<em class="parameter"><code><span class="type">void</span></code></em>);
+<span class="returnvalue">GList</span> *             <a class="link" href="GUPnPFeatureListParser.html#gupnp-feature-list-parser-parse-text" title="gupnp_feature_list_parser_parse_text ()">gupnp_feature_list_parser_parse_text</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPFeatureListParser.html" title="GUPnPFeatureListParser"><span class="type">GUPnPFeatureListParser</span></a> *parser</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">char</span> *text</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="GUPnPFeatureListParser.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  GObject
+   +----GUPnPFeatureListParser
+</pre>
+</div>
+<div class="refsect1">
+<a name="GUPnPFeatureListParser.description"></a><h2>Description</h2>
+<p>
+<a class="link" href="GUPnPFeatureListParser.html" title="GUPnPFeatureListParser"><span class="type">GUPnPFeatureListParser</span></a> parses XML strings from ContentDirectory
+FeatureList state variable.
+</p>
+</div>
+<div class="refsect1">
+<a name="GUPnPFeatureListParser.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="GUPnPFeatureListParser-struct"></a><h3>GUPnPFeatureListParser</h3>
+<pre class="programlisting">typedef struct _GUPnPFeatureListParser GUPnPFeatureListParser;</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-feature-list-parser-new"></a><h3>gupnp_feature_list_parser_new ()</h3>
+<pre class="programlisting"><a class="link" href="GUPnPFeatureListParser.html" title="GUPnPFeatureListParser"><span class="returnvalue">GUPnPFeatureListParser</span></a> * gupnp_feature_list_parser_new  (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A new <a class="link" href="GUPnPFeatureListParser.html" title="GUPnPFeatureListParser"><span class="type">GUPnPFeatureListParser</span></a> object.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-feature-list-parser-parse-text"></a><h3>gupnp_feature_list_parser_parse_text ()</h3>
+<pre class="programlisting"><span class="returnvalue">GList</span> *             gupnp_feature_list_parser_parse_text
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPFeatureListParser.html" title="GUPnPFeatureListParser"><span class="type">GUPnPFeatureListParser</span></a> *parser</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">char</span> *text</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<p>
+Parses <em class="parameter"><code>text</code></em> and returns the list of available features.
+If an error occured <em class="parameter"><code>error</code></em> will be set.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>parser</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPFeatureListParser.html" title="GUPnPFeatureListParser"><span class="type">GUPnPFeatureListParser</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>text</code></em> :</span></p></td>
+<td>The feature list string to be parsed</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>The location where to store the error information if any, or NULL</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The list of
+features or <code class="literal">NULL</code> if an error occured. <span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>][<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GUPnPFeature]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.18</div>
+</body>
+</html>

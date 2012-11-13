@@ -1,9 +1,11 @@
 /*
  * Copyright (C) 2006, 2007 OpenedHand Ltd.
  * Copyright (C) 2007 Zeeshan Ali.
+ * Copyright (C) 2012 Intel Corporation
  *
  * Author: Jorn Baayen <jorn@openedhand.com>
  * Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+ * Author: Krzesimir Nowak <krnowak@openismus.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -28,6 +30,8 @@
 #include <libxml/tree.h>
 #include <stdarg.h>
 
+G_BEGIN_DECLS
+
 /* Misc utilities for inspecting xmlNodes */
 G_GNUC_INTERNAL xmlNode *
 xml_util_get_element                    (xmlNode    *node,
@@ -40,6 +44,16 @@ xml_util_get_child_elements_by_name     (xmlNode *node,
 G_GNUC_INTERNAL const char *
 xml_util_get_child_element_content      (xmlNode    *node,
                                          const char *child_name);
+
+G_GNUC_INTERNAL guint
+xml_util_get_uint_child_element         (xmlNode    *node,
+                                         const char *child_name,
+                                         guint       default_value);
+
+G_GNUC_INTERNAL guint64
+xml_util_get_uint64_child_element       (xmlNode    *node,
+                                         const char *child_name,
+                                         guint64     default_value);
 
 G_GNUC_INTERNAL const char *
 xml_util_get_attribute_content          (xmlNode    *node,
@@ -76,8 +90,33 @@ xml_util_set_child                      (xmlNode    *parent_node,
                                          const char *name,
                                          const char *value);
 
+G_GNUC_INTERNAL void
+xml_util_unset_child                    (xmlNode    *parent_node,
+                                         const char *name);
+
 G_GNUC_INTERNAL gboolean
 xml_util_verify_attribute_is_boolean    (xmlNode    *node,
                                          const char *attribute_name);
+
+G_GNUC_INTERNAL char *
+xml_util_get_child_string               (xmlNode    *parent_node,
+                                         xmlDoc     *doc,
+                                         const char *name);
+
+G_GNUC_INTERNAL gboolean
+xml_util_node_deep_equal                (xmlNode *first,
+                                         xmlNode *second);
+
+G_GNUC_INTERNAL xmlNode *
+xml_util_find_node                      (xmlNode *haystack,
+                                         xmlNode *needle);
+
+G_GNUC_INTERNAL xmlNode *
+xml_util_copy_node                      (xmlNode *node);
+
+G_GNUC_INTERNAL GHashTable *
+xml_util_get_attributes_map             (xmlNode *node);
+
+G_END_DECLS
 
 #endif /* __XML_UTIL_H__ */

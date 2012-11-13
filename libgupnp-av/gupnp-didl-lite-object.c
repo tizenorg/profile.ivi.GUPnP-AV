@@ -1,8 +1,10 @@
 /*
  * Copyright (C) 2009 Nokia Corporation.
+ * Copyright (C) 2012 Intel Corporation
  *
  * Authors: Zeeshan Ali (Khattak) <zeeshan.ali@nokia.com>
  *                                <zeeshanak@gnome.org>
+ *          Krzesimir Nowak <krnowak@openismus.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -38,6 +40,8 @@
 #include "gupnp-didl-lite-item.h"
 #include "gupnp-didl-lite-contributor-private.h"
 #include "xml-util.h"
+#include "fragment-util.h"
+#include "xsd-data.h"
 
 G_DEFINE_ABSTRACT_TYPE (GUPnPDIDLLiteObject,
                         gupnp_didl_lite_object,
@@ -51,6 +55,8 @@ struct _GUPnPDIDLLiteObjectPrivate {
         xmlNs *dc_ns;
         xmlNs *dlna_ns;
 };
+
+static XSDData *didl_lite_xsd;
 
 enum {
         PROP_0,
@@ -75,6 +81,7 @@ enum {
         PROP_DATE,
         PROP_TRACK_NUMBER,
         PROP_DLNA_MANAGED,
+        PROP_UPDATE_ID
 };
 
 static int
@@ -205,6 +212,11 @@ gupnp_didl_lite_object_set_property (GObject      *object,
                                         (didl_object,
                                          g_value_get_flags (value));
                 break;
+        case PROP_UPDATE_ID:
+                gupnp_didl_lite_object_set_update_id
+                                        (didl_object,
+                                         g_value_get_uint (value));
+                break;
         default:
                 G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
                 break;
@@ -324,6 +336,11 @@ gupnp_didl_lite_object_get_property (GObject    *object,
                 g_value_set_flags
                         (value,
                          gupnp_didl_lite_object_get_dlna_managed (didl_object));
+                break;
+        case PROP_UPDATE_ID:
+                g_value_set_uint
+                        (value,
+                         gupnp_didl_lite_object_get_update_id (didl_object));
                 break;
         default:
                 G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
@@ -556,9 +573,6 @@ gupnp_didl_lite_object_class_init (GUPnPDIDLLiteObjectClass *klass)
          *
          * The creator of this object.
          *
-         * Deprecated: 0.5.3: Use #gupnp_didl_lite_object_get_creators and
-         * #gupnp_didl_lite_object_add_creator instead since unlike this
-         * property, they are capable of dealing with multiple creator nodes.
          **/
         g_object_class_install_property
                 (object_class,
@@ -750,6 +764,28 @@ gupnp_didl_lite_object_class_init (GUPnPDIDLLiteObjectClass *klass)
                                      G_PARAM_STATIC_NAME |
                                      G_PARAM_STATIC_NICK |
                                      G_PARAM_STATIC_BLURB));
+
+        /**
+         * GUPnPDIDLLiteObject:update-id:
+         *
+         * Update ID of this object.
+         **/
+        g_object_class_install_property
+                                (object_class,
+                                 PROP_UPDATE_ID,
+                                 g_param_spec_uint ("update-id",
+                                                    "UpdateID",
+                                                    "Update ID of this object.",
+                                                    0,
+                                                    G_MAXUINT,
+                                                    0,
+                                                    G_PARAM_READWRITE |
+                                                    G_PARAM_STATIC_NAME |
+                                                    G_PARAM_STATIC_NICK |
+                                                    G_PARAM_STATIC_BLURB));
+
+        if (didl_lite_xsd == NULL)
+                didl_lite_xsd = fragment_util_get_didl_lite_xsd_data ();
 }
 
 static gboolean
@@ -812,6 +848,70 @@ get_contributor_list_by_name (GUPnPDIDLLiteObject *object,
         return ret;
 }
 
+static char *
+get_contributors_xml_string_by_name (GUPnPDIDLLiteObject *object,
+                                     const char          *name)
+{
+        GList     *contributors = NULL;
+        char      *ret = NULL;
+        GList     *l;
+        xmlBuffer *buffer;
+
+        contributors = gupnp_didl_lite_object_get_properties (object, name);
+        if (contributors == NULL)
+                return NULL;
+
+        buffer = xmlBufferCreate ();
+
+        for (l = contributors; l; l = l->next) {
+                xmlNode *node;
+
+                node = (xmlNode *) l->data;
+                if (!node->children)
+                        continue;
+
+                xmlNodeDump (buffer,
+                             object->priv->xml_doc->doc,
+                             node,
+                             0,
+                             0);
+        }
+
+        ret = g_strndup ((char *) xmlBufferContent (buffer),
+                         xmlBufferLength (buffer));
+        xmlBufferFree (buffer);
+
+        g_list_free (contributors);
+
+        return ret;
+}
+
+static void
+unset_contributors_by_name (GUPnPDIDLLiteObject *object, const char *name)
+{
+        GList *contributors = NULL;
+        GList *l;
+
+        contributors = gupnp_didl_lite_object_get_properties (object, name);
+        if (contributors == NULL)
+                return;
+
+        for (l = contributors; l; l = l->next) {
+                xmlNode *node;
+
+                node = (xmlNode *) l->data;
+                if (!node->children)
+                        continue;
+
+                xmlUnlinkNode (node);
+                xmlFreeNode (node);
+        }
+
+        g_list_free (contributors);
+
+        return;
+}
+
 /**
  * gupnp_didl_lite_object_new_from_xml:
  * @xml_node: The pointer to 'res' node in XML document
@@ -855,6 +955,23 @@ gupnp_didl_lite_object_new_from_xml (xmlNode     *xml_node,
                                      NULL);
         else
                 return NULL;
+}
+
+/**
+ * gupnp_didl_lite_object_get_gupnp_xml_doc:
+ * @object: The #GUPnPDIDLLiteObject
+ *
+ * Get the pointer to the XML document containing this object.
+ *
+ * Returns: (transfer none): The pointer to the XML document containing this
+ * object.
+ **/
+GUPnPXMLDoc *
+gupnp_didl_lite_object_get_gupnp_xml_doc (GUPnPDIDLLiteObject *object)
+{
+        g_return_val_if_fail (GUPNP_IS_DIDL_LITE_OBJECT (object), NULL);
+
+        return object->priv->xml_doc;
 }
 
 /**
@@ -1036,8 +1153,6 @@ gupnp_didl_lite_object_get_title (GUPnPDIDLLiteObject *object)
  * Get the creator of the @object.
  *
  * Return value: The creator of the @object, or %NULL.
- *
- * Deprecated: 0.5.3: Use #gupnp_didl_lite_object_get_creators instead.
  **/
 const char *
 gupnp_didl_lite_object_get_creator (GUPnPDIDLLiteObject *object)
@@ -1334,6 +1449,46 @@ gupnp_didl_lite_object_get_dlna_managed (GUPnPDIDLLiteObject *object)
 }
 
 /**
+ * gupnp_didl_lite_object_get_update_id:
+ * @object: #GUPnPDIDLLiteObject
+ *
+ * Get the update ID of the @object.
+ *
+ * Return value: The update ID of the @object.
+ **/
+guint
+gupnp_didl_lite_object_get_update_id (GUPnPDIDLLiteObject *object)
+{
+        g_return_val_if_fail (object != NULL, 0);
+        g_return_val_if_fail (GUPNP_IS_DIDL_LITE_OBJECT (object), 0);
+
+        return xml_util_get_uint_child_element (object->priv->xml_node,
+                                                "objectUpdateID",
+                                                0);
+}
+
+/**
+ * gupnp_didl_lite_object_update_id_is_set:
+ * @object: #GUPnPDIDLLiteObject
+ *
+ * Get whether the update ID of the @object is set.
+ *
+ * Return value: %TRUE if update ID is set, otherwise %FALSE
+ **/
+gboolean
+gupnp_didl_lite_object_update_id_is_set (GUPnPDIDLLiteObject *object)
+{
+        const char *content;
+
+        g_return_val_if_fail (object != NULL, FALSE);
+        g_return_val_if_fail (GUPNP_IS_DIDL_LITE_OBJECT (object), FALSE);
+
+        content = xml_util_get_child_element_content (object->priv->xml_node,
+                                                      "objectUpdateID");
+        return content != NULL;
+}
+
+/**
  * gupnp_didl_lite_object_get_resources:
  * @object: #GUPnPDIDLLiteObject
  *
@@ -1571,8 +1726,6 @@ gupnp_didl_lite_object_set_title (GUPnPDIDLLiteObject *object,
  * @creator: The creator
  *
  * Set the creator of the @object to @creator.
- *
- * Deprecated: 0.5.3: Use #gupnp_didl_lite_object_add_creator instead.
  **/
 void
 gupnp_didl_lite_object_set_creator (GUPnPDIDLLiteObject *object,
@@ -1917,6 +2070,51 @@ gupnp_didl_lite_object_set_dlna_managed (GUPnPDIDLLiteObject *object,
 }
 
 /**
+ * gupnp_didl_lite_object_set_update_id:
+ * @object: #GUPnPDIDLLiteObject
+ * @update_id: Update ID
+ *
+ * Set the update ID of the @object.
+ **/
+void
+gupnp_didl_lite_object_set_update_id (GUPnPDIDLLiteObject *object,
+                                      guint                update_id)
+{
+        char *str;
+
+        g_return_if_fail (object != NULL);
+        g_return_if_fail (GUPNP_IS_DIDL_LITE_OBJECT (object));
+
+        str = g_strdup_printf ("%u", update_id);
+        xml_util_set_child (object->priv->xml_node,
+                            object->priv->upnp_ns,
+                            object->priv->xml_doc->doc,
+                            "objectUpdateID",
+                            str);
+        g_free (str);
+
+        g_object_notify (G_OBJECT (object), "update-id");
+}
+
+/**
+ * gupnp_didl_lite_object_unset_update_id:
+ * @object: #GUPnPDIDLLiteObject
+ *
+ * Unset the update ID property of the @object.
+ **/
+void
+gupnp_didl_lite_object_unset_update_id (GUPnPDIDLLiteObject *object)
+{
+        g_return_if_fail (object != NULL);
+        g_return_if_fail (GUPNP_IS_DIDL_LITE_OBJECT (object));
+
+        xml_util_unset_child (object->priv->xml_node,
+                              "objectUpdateID");
+
+        g_object_notify (G_OBJECT (object), "update-id");
+}
+
+/**
  * gupnp_didl_lite_object_add_resource:
  * @object: A #GUPnPDIDLLiteObject
  *
@@ -1964,3 +2162,269 @@ gupnp_didl_lite_object_add_descriptor (GUPnPDIDLLiteObject *object)
                                                         object->priv->xml_doc);
 }
 
+/**
+ * gupnp_didl_lite_object_get_title_xml_string:
+ * @object: A #GUPnPDIDLLiteObject
+ *
+ * Creates a string representation of the DIDL-Lite XML fragment related to the
+ * object title.
+ *
+ * Return value: A DIDL-Lite XML fragment string, or %NULL. #g_free after usage.
+ **/
+char *
+gupnp_didl_lite_object_get_title_xml_string (GUPnPDIDLLiteObject *object)
+{
+        g_return_val_if_fail (GUPNP_IS_DIDL_LITE_OBJECT (object), NULL);
+
+        return xml_util_get_child_string (object->priv->xml_node,
+                                          object->priv->xml_doc->doc,
+                                          "title");
+}
+
+/**
+ * gupnp_didl_lite_object_get_date_xml_string:
+ * @object: A #GUPnPDIDLLiteObject
+ *
+ * Creates a string representation of the DIDL-Lite XML fragment related to the
+ * object date.
+ *
+ * Return value: A DIDL-Lite XML fragment string, or %NULL. #g_free after usage.
+ **/
+char *
+gupnp_didl_lite_object_get_date_xml_string (GUPnPDIDLLiteObject *object)
+{
+        g_return_val_if_fail (GUPNP_IS_DIDL_LITE_OBJECT (object), NULL);
+
+        return xml_util_get_child_string (object->priv->xml_node,
+                                          object->priv->xml_doc->doc,
+                                          "date");
+}
+
+/**
+ * gupnp_didl_lite_object_get_upnp_class_xml_string:
+ * @object: A #GUPnPDIDLLiteObject
+ *
+ * Creates a string representation of the DIDL-Lite XML fragment related to the
+ * object UPnP class.
+ *
+ * Return value: A DIDL-Lite XML fragment string, or %NULL. #g_free after usage.
+ **/
+char *
+gupnp_didl_lite_object_get_upnp_class_xml_string (GUPnPDIDLLiteObject *object)
+{
+        g_return_val_if_fail (GUPNP_IS_DIDL_LITE_OBJECT (object), NULL);
+
+        return xml_util_get_child_string (object->priv->xml_node,
+                                          object->priv->xml_doc->doc,
+                                          "class");
+}
+
+/**
+ * gupnp_didl_lite_object_get_album_xml_string:
+ * @object: A #GUPnPDIDLLiteObject
+ *
+ * Creates a string representation of the DIDL-Lite XML fragment related to the
+ * object album.
+ *
+ * Return value: A DIDL-Lite XML fragment string, or %NULL. #g_free after usage.
+ **/
+char *
+gupnp_didl_lite_object_get_album_xml_string (GUPnPDIDLLiteObject *object)
+{
+        g_return_val_if_fail (GUPNP_IS_DIDL_LITE_OBJECT (object), NULL);
+
+        return xml_util_get_child_string (object->priv->xml_node,
+                                          object->priv->xml_doc->doc,
+                                          "album");
+}
+
+/**
+ * gupnp_didl_lite_object_get_track_number_xml_string:
+ * @object: A #GUPnPDIDLLiteObject
+ *
+ * Creates a string representation of the DIDL-Lite XML fragment related to the
+ * object track number.
+ *
+ * Return value: A DIDL-Lite XML fragment string, or %NULL. #g_free after usage.
+ **/
+char *
+gupnp_didl_lite_object_get_track_number_xml_string (GUPnPDIDLLiteObject *object)
+{
+        g_return_val_if_fail (GUPNP_IS_DIDL_LITE_OBJECT (object), NULL);
+
+        return xml_util_get_child_string (object->priv->xml_node,
+                                          object->priv->xml_doc->doc,
+                                          "originalTrackNumber");
+}
+
+/**
+ * gupnp_didl_lite_object_get_artists_xml_string:
+ * @object: A #GUPnPDIDLLiteObject
+ *
+ * Creates a string representation of the DIDL-Lite XML fragments related to the
+ * object artists.
+ *
+ * Return value: A DIDL-Lite XML fragment string, or %NULL. #g_free after usage.
+ **/
+char *
+gupnp_didl_lite_object_get_artists_xml_string (GUPnPDIDLLiteObject *object)
+{
+        g_return_val_if_fail (GUPNP_IS_DIDL_LITE_OBJECT (object), NULL);
+
+        return get_contributors_xml_string_by_name (object, "artist");
+}
+
+/**
+ * gupnp_didl_lite_object_unset_artists:
+ * @object: #GUPnPDIDLLiteObject
+ *
+ * Unset the artists properties of the @object.
+ **/
+void
+gupnp_didl_lite_object_unset_artists (GUPnPDIDLLiteObject *object)
+{
+        g_return_if_fail (object != NULL);
+        g_return_if_fail (GUPNP_IS_DIDL_LITE_OBJECT (object));
+
+        unset_contributors_by_name (object, "artist");
+
+        g_object_notify (G_OBJECT (object), "artist");
+}
+
+/* GENERAL DOCS ABOUT FRAGMENT APPLYING.
+ *
+ * The function applying fragments takes two arrays of fragments. One
+ * array contains current fragments and another one contains new
+ * fragments. Both arrays have to be of equal length and have more
+ * then zero elements. Each of fragments in both arrays make a pair
+ * (i.e. first/second/third/... fragment in current array and
+ * first/second/third/... fragment in new array form a pair). Each
+ * fragment can have zero, one or more XML elements.
+ *
+ * For each fragment pair first we check if current fragment is indeed
+ * a part of this object's document. If it is then we check validity
+ * of new fragment for applying. If it is then we replace the current
+ * fragment with new fragment in object's document copy and validate
+ * the modified document against didl-lite schema. After all fragment
+ * pairs are processed we replace a part describing this object in
+ * original document with respective one in modified document.
+ *
+ * Checking if current fragment is a part of object's document is in
+ * essence checking for deep equality of document's node and this
+ * fragment (i.e. element name and properties have to be equal, same
+ * for children).
+ *
+ * Checking if new fragment is valid for applying is about checking
+ * whether element in new fragment is either a context (i.e. both
+ * current element and new element are deep equal) or element
+ * modification (i.e. changes attributes but element name is still the
+ * same). There may be a case when there are more elements in current
+ * fragment than in new fragment then those excessive elements are
+ * checked whether they can be really removed. The other case is when
+ * there are more elements in new fragments than in current fragment -
+ * in such situation we check if additions are valid.
+ *
+ * By checking validity of modification, removals or additions we mean
+ * that no read-only properties are changed. Additionaly, for
+ * removals, we check if required properties are not removed.
+ *
+ * This approach may fail in some more twisted cases.
+ */
+
+/**
+ * gupnp_didl_lite_object_apply_fragments:
+ * @object: The #GUPnPDIDLLiteObject
+ * @current_fragments: (array length=current_size) (transfer none): XML
+ * fragments of @object.
+ * @current_size: Size of @current_fragments or -1.
+ * @new_fragments: (array length=new_size) (transfer none): Substitutes
+ * for @current_fragments.
+ * @new_size: Size of @new_fragments or -1.
+ *
+ * Updates object by applying @new_fragments in places of
+ * @current_fragments. For @current_size and @new_size -1 can be
+ * passed when respectively @current_fragments and @new_fragments are
+ * NULL terminated.
+ *
+ * Returns: Result of operation.
+ */
+GUPnPDIDLLiteFragmentResult
+gupnp_didl_lite_object_apply_fragments (GUPnPDIDLLiteObject  *object,
+                                        gchar               **current_fragments,
+                                        gint                  current_size,
+                                        gchar               **new_fragments,
+                                        gint                  new_size)
+{
+        DocNode modified;
+        DocNode original;
+        GUPnPDIDLLiteFragmentResult result;
+        gint iter;
+
+        g_return_val_if_fail (GUPNP_IS_DIDL_LITE_OBJECT (object),
+                              GUPNP_DIDL_LITE_FRAGMENT_RESULT_UNKNOWN_ERROR);
+        g_return_val_if_fail (current_fragments != NULL,
+                              GUPNP_DIDL_LITE_FRAGMENT_RESULT_CURRENT_INVALID);
+        g_return_val_if_fail (new_fragments != NULL,
+                              GUPNP_DIDL_LITE_FRAGMENT_RESULT_NEW_INVALID);
+
+        result = GUPNP_DIDL_LITE_FRAGMENT_RESULT_OK;
+        modified.doc = NULL;
+
+        if (current_size < 0)
+                current_size = g_strv_length (current_fragments);
+        if (new_size < 0)
+                new_size = g_strv_length (new_fragments);
+
+        if (current_size != new_size) {
+                result = GUPNP_DIDL_LITE_FRAGMENT_RESULT_MISMATCH;
+
+                goto out;
+        }
+
+        if (!current_size) {
+                result = GUPNP_DIDL_LITE_FRAGMENT_RESULT_CURRENT_INVALID;
+
+                goto out;
+        }
+
+        original.doc = object->priv->xml_doc->doc;
+        original.node = object->priv->xml_node;
+        modified.doc = xmlCopyDoc (original.doc, 1);
+
+        if (modified.doc == NULL) {
+                result = GUPNP_DIDL_LITE_FRAGMENT_RESULT_UNKNOWN_ERROR;
+
+                goto out;
+        }
+
+        modified.node = xml_util_find_node (modified.doc->children,
+                                            original.node);
+
+        if (modified.node == NULL) {
+                result = GUPNP_DIDL_LITE_FRAGMENT_RESULT_UNKNOWN_ERROR;
+
+                goto out;
+        }
+
+        for (iter = 0; iter < new_size; ++iter) {
+                const gchar *current_fragment = current_fragments[iter];
+                const gchar *new_fragment = new_fragments[iter];
+
+                result = fragment_util_check_fragments (&original,
+                                                        &modified,
+                                                        current_fragment,
+                                                        new_fragment,
+                                                        didl_lite_xsd);
+
+                if (result != GUPNP_DIDL_LITE_FRAGMENT_RESULT_OK)
+                        goto out;
+        }
+
+        if (!fragment_util_apply_modification (&object->priv->xml_node,
+                                               &modified))
+                result = GUPNP_DIDL_LITE_FRAGMENT_RESULT_UNKNOWN_ERROR;
+ out:
+        if (modified.doc != NULL)
+                xmlFreeDoc (modified.doc);
+        return result;
+}

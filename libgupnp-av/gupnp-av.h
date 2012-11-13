@@ -21,8 +21,10 @@
  * Boston, MA 02110-1301, USA.
  */
 
+#include "gupnp-av-enums.h"
 #include "gupnp-didl-lite-object.h"
 #include "gupnp-didl-lite-container.h"
+#include "gupnp-didl-lite-createclass.h"
 #include "gupnp-didl-lite-item.h"
 #include "gupnp-didl-lite-parser.h"
 #include "gupnp-didl-lite-resource.h"
@@ -31,5 +33,7 @@
 #include "gupnp-protocol-info.h"
 #include "gupnp-search-criteria-parser.h"
 #include "gupnp-last-change-parser.h"
+#include "gupnp-feature.h"
+#include "gupnp-feature-list-parser.h"
 #include "gupnp-dlna.h"
 

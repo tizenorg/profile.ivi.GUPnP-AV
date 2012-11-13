@@ -1,10 +1,12 @@
 /*
  * Copyright (C) 2009 Nokia Corporation.
  * Copyright (C) 2007, 2008 OpenedHand Ltd.
+ * Copyright (C) 2012 Intel Corporation
  *
  * Authors: Zeeshan Ali (Khattak) <zeeshan.ali@nokia.com>
  *                                <zeeshanak@gnome.org>
  *          Jorn Baayen <jorn@openedhand.com>
+ *          Krzesimir Nowak <krnowak@openismus.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -32,6 +34,7 @@
 #include "gupnp-didl-lite-resource.h"
 #include "gupnp-didl-lite-descriptor.h"
 #include "gupnp-didl-lite-contributor.h"
+#include "gupnp-av-enums.h"
 
 G_BEGIN_DECLS
 
@@ -110,10 +113,10 @@ gupnp_didl_lite_object_get_restricted   (GUPnPDIDLLiteObject *object);
 const char *
 gupnp_didl_lite_object_get_title        (GUPnPDIDLLiteObject *object);
 
-#ifndef GUPNP_DISABLE_DEPRECATED
 const char *
 gupnp_didl_lite_object_get_creator      (GUPnPDIDLLiteObject *object);
 
+#ifndef GUPNP_DISABLE_DEPRECATED
 const char *
 gupnp_didl_lite_object_get_artist       (GUPnPDIDLLiteObject *object);
 
@@ -158,6 +161,12 @@ gupnp_didl_lite_object_get_track_number (GUPnPDIDLLiteObject *object);
 GUPnPOCMFlags
 gupnp_didl_lite_object_get_dlna_managed (GUPnPDIDLLiteObject *object);
 
+guint
+gupnp_didl_lite_object_get_update_id    (GUPnPDIDLLiteObject *object);
+
+gboolean
+gupnp_didl_lite_object_update_id_is_set (GUPnPDIDLLiteObject *object);
+
 GList *
 gupnp_didl_lite_object_get_resources    (GUPnPDIDLLiteObject *object);
 
@@ -194,11 +203,11 @@ void
 gupnp_didl_lite_object_set_title        (GUPnPDIDLLiteObject *object,
                                          const char          *title);
 
-#ifndef GUPNP_DISABLE_DEPRECATED
 void
 gupnp_didl_lite_object_set_creator      (GUPnPDIDLLiteObject *object,
                                          const char          *creator);
 
+#ifndef GUPNP_DISABLE_DEPRECATED
 void
 gupnp_didl_lite_object_set_artist       (GUPnPDIDLLiteObject *object,
                                          const char          *artist);
@@ -235,12 +244,12 @@ gupnp_didl_lite_object_set_album_art    (GUPnPDIDLLiteObject *object,
                                          const char          *album_art);
 
 void
-gupnp_didl_lite_object_set_description (GUPnPDIDLLiteObject *object,
-                                        const char          *description);
+gupnp_didl_lite_object_set_description  (GUPnPDIDLLiteObject *object,
+                                         const char          *description);
 
 void
-gupnp_didl_lite_object_set_date        (GUPnPDIDLLiteObject *object,
-                                        const char          *date);
+gupnp_didl_lite_object_set_date         (GUPnPDIDLLiteObject *object,
+                                         const char          *date);
 
 void
 gupnp_didl_lite_object_set_track_number (GUPnPDIDLLiteObject *object,
@@ -249,6 +258,48 @@ gupnp_didl_lite_object_set_track_number (GUPnPDIDLLiteObject *object,
 void
 gupnp_didl_lite_object_set_dlna_managed (GUPnPDIDLLiteObject *object,
                                          GUPnPOCMFlags        dlna_managed);
+
+void
+gupnp_didl_lite_object_set_update_id    (GUPnPDIDLLiteObject *object,
+                                         guint                update_id);
+
+void
+gupnp_didl_lite_object_unset_update_id  (GUPnPDIDLLiteObject *object);
+
+char *
+gupnp_didl_lite_object_get_title_xml_string
+                                        (GUPnPDIDLLiteObject *object);
+
+char *
+gupnp_didl_lite_object_get_date_xml_string
+                                        (GUPnPDIDLLiteObject *object);
+
+char *
+gupnp_didl_lite_object_get_upnp_class_xml_string
+                                        (GUPnPDIDLLiteObject *object);
+
+char *
+gupnp_didl_lite_object_get_album_xml_string
+                                        (GUPnPDIDLLiteObject *object);
+
+char *
+gupnp_didl_lite_object_get_track_number_xml_string
+                                        (GUPnPDIDLLiteObject *object);
+
+char *
+gupnp_didl_lite_object_get_artists_xml_string
+                                        (GUPnPDIDLLiteObject *object);
+
+void
+gupnp_didl_lite_object_unset_artists    (GUPnPDIDLLiteObject *object);
+
+GUPnPDIDLLiteFragmentResult
+gupnp_didl_lite_object_apply_fragments
+                                      (GUPnPDIDLLiteObject  *object,
+                                       gchar               **current_fragments,
+                                       gint                  current_size,
+                                       gchar               **new_fragments,
+                                       gint                  new_size);
 
 G_END_DECLS
 
