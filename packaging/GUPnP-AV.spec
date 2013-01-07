@@ -80,6 +80,7 @@ rm -rf  $RPM_BUILD_ROOT%{_datadir}/gtk-doc
 # >> files
 %doc AUTHORS COPYING README
 %{_libdir}/*.so.*
+%{_datadir}/gupnp-av/*.xsd
 # << files
 
 
@@ -89,6 +90,5 @@ rm -rf  $RPM_BUILD_ROOT%{_datadir}/gtk-doc
 %{_includedir}/gupnp-av-1.0/libgupnp-av
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/gupnp-av-1.0.pc
-%{_datadir}/gupnp-av/*.xsd
 # << files devel
 
