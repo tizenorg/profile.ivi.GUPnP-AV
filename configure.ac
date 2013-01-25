@@ -1,6 +1,6 @@
 AC_PREREQ([2.63])
 AC_INIT([gupnp-av],
-        [0.11.2],
+        [0.11.7],
         [https://bugzilla.gnome.org/enter_bug.cgi?product=GUPnP],
         [gupnp-av],
         [http://www.gupnp.org/])
@@ -10,7 +10,7 @@ AC_CONFIG_SRCDIR(libgupnp-av/gupnp-av.h)
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_AUX_DIR([build-aux])
 
-AM_INIT_AUTOMAKE([1.11 tar-ustar no-dist-gzip dist-xz])
+AM_INIT_AUTOMAKE([1.11 tar-ustar no-dist-gzip dist-xz -Wno-portability])
 
 AM_SILENT_RULES([yes])
 

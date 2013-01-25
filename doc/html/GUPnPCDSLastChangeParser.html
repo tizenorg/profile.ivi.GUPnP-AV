@@ -1,0 +1,361 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GUPnPCDSLastChangeParser</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.76.1">
+<link rel="home" href="index.html" title="GUPnP A/V Reference Manual">
+<link rel="up" href="ch01.html" title="GUPnP A/V">
+<link rel="prev" href="GUPnPLastChangeParser.html" title="GUPnPLastChangeParser">
+<link rel="next" href="GUPnPSearchCriteriaParser.html" title="GUPnPSearchCriteriaParser">
+<meta name="generator" content="GTK-Doc V1.18 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="GUPnPLastChangeParser.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">GUPnP A/V Reference Manual</th>
+<td><a accesskey="n" href="GUPnPSearchCriteriaParser.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#GUPnPCDSLastChangeParser.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#GUPnPCDSLastChangeParser.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#GUPnPCDSLastChangeParser.object-hierarchy" class="shortcut">Object Hierarchy</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="GUPnPCDSLastChangeParser"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GUPnPCDSLastChangeParser.top_of_page"></a>GUPnPCDSLastChangeParser</span></h2>
+<p>GUPnPCDSLastChangeParser — LastChange parser for the format used in
+CDS:3</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="GUPnPCDSLastChangeParser.synopsis"></a><h2>Synopsis</h2>
+<a name="GUPnPCDSLastChangeEntry"></a><pre class="synopsis">struct              <a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeParser-struct" title="struct GUPnPCDSLastChangeParser">GUPnPCDSLastChangeParser</a>;
+enum                <a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEvent" title="enum GUPnPCDSLastChangeEvent">GUPnPCDSLastChangeEvent</a>;
+                    <a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEntry-struct" title="GUPnPCDSLastChangeEntry">GUPnPCDSLastChangeEntry</a>;
+<a class="link" href="GUPnPCDSLastChangeParser.html" title="GUPnPCDSLastChangeParser"><span class="returnvalue">GUPnPCDSLastChangeParser</span></a> * <a class="link" href="GUPnPCDSLastChangeParser.html#gupnp-cds-last-change-parser-new" title="gupnp_cds_last_change_parser_new ()">gupnp_cds_last_change_parser_new</a>
+                                                        (<em class="parameter"><code><span class="type">void</span></code></em>);
+<span class="returnvalue">GList</span> *             <a class="link" href="GUPnPCDSLastChangeParser.html#gupnp-cds-last-change-parser-parse" title="gupnp_cds_last_change_parser_parse ()">gupnp_cds_last_change_parser_parse</a>  (<em class="parameter"><code><a class="link" href="GUPnPCDSLastChangeParser.html" title="GUPnPCDSLastChangeParser"><span class="type">GUPnPCDSLastChangeParser</span></a> *parser</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">char</span> *last_change</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);
+<a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEntry"><span class="returnvalue">GUPnPCDSLastChangeEntry</span></a> * <a class="link" href="GUPnPCDSLastChangeParser.html#gupnp-cds-last-change-entry-ref" title="gupnp_cds_last_change_entry_ref ()">gupnp_cds_last_change_entry_ref</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEntry"><span class="type">GUPnPCDSLastChangeEntry</span></a> *entry</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="GUPnPCDSLastChangeParser.html#gupnp-cds-last-change-entry-unref" title="gupnp_cds_last_change_entry_unref ()">gupnp_cds_last_change_entry_unref</a>   (<em class="parameter"><code><a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEntry"><span class="type">GUPnPCDSLastChangeEntry</span></a> *entry</code></em>);
+<a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEvent" title="enum GUPnPCDSLastChangeEvent"><span class="returnvalue">GUPnPCDSLastChangeEvent</span></a> <a class="link" href="GUPnPCDSLastChangeParser.html#gupnp-cds-last-change-entry-get-event" title="gupnp_cds_last_change_entry_get_event ()">gupnp_cds_last_change_entry_get_event</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEntry"><span class="type">GUPnPCDSLastChangeEntry</span></a> *entry</code></em>);
+const <span class="returnvalue">char</span> *        <a class="link" href="GUPnPCDSLastChangeParser.html#gupnp-cds-last-change-entry-get-object-id" title="gupnp_cds_last_change_entry_get_object_id ()">gupnp_cds_last_change_entry_get_object_id</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEntry"><span class="type">GUPnPCDSLastChangeEntry</span></a> *entry</code></em>);
+const <span class="returnvalue">char</span> *        <a class="link" href="GUPnPCDSLastChangeParser.html#gupnp-cds-last-change-entry-get-parent-id" title="gupnp_cds_last_change_entry_get_parent_id ()">gupnp_cds_last_change_entry_get_parent_id</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEntry"><span class="type">GUPnPCDSLastChangeEntry</span></a> *entry</code></em>);
+const <span class="returnvalue">char</span> *        <a class="link" href="GUPnPCDSLastChangeParser.html#gupnp-cds-last-change-entry-get-class" title="gupnp_cds_last_change_entry_get_class ()">gupnp_cds_last_change_entry_get_class</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEntry"><span class="type">GUPnPCDSLastChangeEntry</span></a> *entry</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="GUPnPCDSLastChangeParser.html#gupnp-cds-last-change-entry-is-subtree-update" title="gupnp_cds_last_change_entry_is_subtree_update ()">gupnp_cds_last_change_entry_is_subtree_update</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEntry"><span class="type">GUPnPCDSLastChangeEntry</span></a> *entry</code></em>);
+<span class="returnvalue">guint32</span>             <a class="link" href="GUPnPCDSLastChangeParser.html#gupnp-cds-last-change-entry-get-update-id" title="gupnp_cds_last_change_entry_get_update_id ()">gupnp_cds_last_change_entry_get_update_id</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEntry"><span class="type">GUPnPCDSLastChangeEntry</span></a> *entry</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="GUPnPCDSLastChangeParser.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  GObject
+   +----GUPnPCDSLastChangeParser
+</pre>
+<pre class="synopsis">
+  GBoxed
+   +----GUPnPCDSLastChangeEntry
+</pre>
+</div>
+<div class="refsect1">
+<a name="GUPnPCDSLastChangeParser.description"></a><h2>Description</h2>
+<p>
+<a class="link" href="GUPnPCDSLastChangeParser.html" title="GUPnPCDSLastChangeParser"><span class="type">GUPnPCDSLastChangeParser</span></a> parses XML strings from
+CDS's LastChange state variable.
+</p>
+</div>
+<div class="refsect1">
+<a name="GUPnPCDSLastChangeParser.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="GUPnPCDSLastChangeParser-struct"></a><h3>struct GUPnPCDSLastChangeParser</h3>
+<pre class="programlisting">struct GUPnPCDSLastChangeParser;</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GUPnPCDSLastChangeEvent"></a><h3>enum GUPnPCDSLastChangeEvent</h3>
+<pre class="programlisting">typedef enum {
+        GUPNP_CDS_LAST_CHANGE_EVENT_INVALID,
+        GUPNP_CDS_LAST_CHANGE_EVENT_OBJECT_ADDED,
+        GUPNP_CDS_LAST_CHANGE_EVENT_OBJECT_REMOVED,
+        GUPNP_CDS_LAST_CHANGE_EVENT_OBJECT_MODIFIED,
+        GUPNP_CDS_LAST_CHANGE_EVENT_ST_DONE
+} GUPnPCDSLastChangeEvent;
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GUPnPCDSLastChangeEntry-struct"></a><h3>GUPnPCDSLastChangeEntry</h3>
+<pre class="programlisting">typedef struct _GUPnPCDSLastChangeEntry GUPnPCDSLastChangeEntry;</pre>
+<p>
+Opaque struct which contains information about the event.
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-cds-last-change-parser-new"></a><h3>gupnp_cds_last_change_parser_new ()</h3>
+<pre class="programlisting"><a class="link" href="GUPnPCDSLastChangeParser.html" title="GUPnPCDSLastChangeParser"><span class="returnvalue">GUPnPCDSLastChangeParser</span></a> * gupnp_cds_last_change_parser_new
+                                                        (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>
+Create a new <a class="link" href="GUPnPCDSLastChangeParser.html" title="GUPnPCDSLastChangeParser"><span class="type">GUPnPCDSLastChangeParser</span></a>.
+</p>
+<p>
+This parser is able to parse LastChange as defined in the
+ContentDirectory:3 specification.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A new instance of <a class="link" href="GUPnPCDSLastChangeParser.html" title="GUPnPCDSLastChangeParser"><span class="type">GUPnPCDSLastChangeParser</span></a>. <span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-cds-last-change-parser-parse"></a><h3>gupnp_cds_last_change_parser_parse ()</h3>
+<pre class="programlisting"><span class="returnvalue">GList</span> *             gupnp_cds_last_change_parser_parse  (<em class="parameter"><code><a class="link" href="GUPnPCDSLastChangeParser.html" title="GUPnPCDSLastChangeParser"><span class="type">GUPnPCDSLastChangeParser</span></a> *parser</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">char</span> *last_change</code></em>,
+                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<p>
+Parse a LastChange XML document in the flavor defined by the
+ContentDirectory:3 specification.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>parser</code></em> :</span></p></td>
+<td><a class="link" href="GUPnPCDSLastChangeParser.html" title="GUPnPCDSLastChangeParser"><span class="type">GUPnPCDSLastChangeParser</span></a></td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>last_change</code></em> :</span></p></td>
+<td>XML string to parse</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em> :</span></p></td>
+<td>Return value for parser error or <code class="literal">NULL</code> to ingore</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>List of <a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEntry"><span class="type">GUPnPCDSLastChangeEntry</span></a>s. <span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GUPnPCDSLastChangeEntry][<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-cds-last-change-entry-ref"></a><h3>gupnp_cds_last_change_entry_ref ()</h3>
+<pre class="programlisting"><a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEntry"><span class="returnvalue">GUPnPCDSLastChangeEntry</span></a> * gupnp_cds_last_change_entry_ref
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEntry"><span class="type">GUPnPCDSLastChangeEntry</span></a> *entry</code></em>);</pre>
+<p>
+Increase reference count of a <a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEntry"><span class="type">GUPnPCDSLastChangeEntry</span></a>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>entry</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEntry"><span class="type">GUPnPCDSLastChangeEntry</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The object passed in <em class="parameter"><code>entry</code></em>. <span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-cds-last-change-entry-unref"></a><h3>gupnp_cds_last_change_entry_unref ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gupnp_cds_last_change_entry_unref   (<em class="parameter"><code><a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEntry"><span class="type">GUPnPCDSLastChangeEntry</span></a> *entry</code></em>);</pre>
+<p>
+Decrease reference count of a <a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEntry"><span class="type">GUPnPCDSLastChangeEntry</span></a>. If the reference
+count drops to 0, <em class="parameter"><code>entry</code></em> is freed.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>entry</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEntry"><span class="type">GUPnPCDSLastChangeEntry</span></a>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-cds-last-change-entry-get-event"></a><h3>gupnp_cds_last_change_entry_get_event ()</h3>
+<pre class="programlisting"><a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEvent" title="enum GUPnPCDSLastChangeEvent"><span class="returnvalue">GUPnPCDSLastChangeEvent</span></a> gupnp_cds_last_change_entry_get_event
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEntry"><span class="type">GUPnPCDSLastChangeEntry</span></a> *entry</code></em>);</pre>
+<p>
+Get the type of the last change entry as defined in
+<a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEvent" title="enum GUPnPCDSLastChangeEvent"><span class="type">GUPnPCDSLastChangeEvent</span></a>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>entry</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEntry"><span class="type">GUPnPCDSLastChangeEntry</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>An event from the <a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEvent" title="enum GUPnPCDSLastChangeEvent"><span class="type">GUPnPCDSLastChangeEvent</span></a> or
+<code class="literal">GUPNP_CDS_LAST_CHANGE_EVENT_INVALID</code> if the entry is not valid.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-cds-last-change-entry-get-object-id"></a><h3>gupnp_cds_last_change_entry_get_object_id ()</h3>
+<pre class="programlisting">const <span class="returnvalue">char</span> *        gupnp_cds_last_change_entry_get_object_id
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEntry"><span class="type">GUPnPCDSLastChangeEntry</span></a> *entry</code></em>);</pre>
+<p>
+Get the ID of the object in this change entry.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>entry</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEntry"><span class="type">GUPnPCDSLastChangeEntry</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The id of the object of this entry. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-cds-last-change-entry-get-parent-id"></a><h3>gupnp_cds_last_change_entry_get_parent_id ()</h3>
+<pre class="programlisting">const <span class="returnvalue">char</span> *        gupnp_cds_last_change_entry_get_parent_id
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEntry"><span class="type">GUPnPCDSLastChangeEntry</span></a> *entry</code></em>);</pre>
+<p>
+Get the parent object id of the object in this change entry. This is only
+valid if <a class="link" href="GUPnPCDSLastChangeParser.html#gupnp-cds-last-change-entry-get-event" title="gupnp_cds_last_change_entry_get_event ()"><code class="function">gupnp_cds_last_change_entry_get_event()</code></a> returns
+<code class="literal">GUPNP_CDS_LAST_CHANGE_EVENT_OBJECT_ADDED</code>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>entry</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEntry"><span class="type">GUPnPCDSLastChangeEntry</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The id of the object's parent of this entry. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-cds-last-change-entry-get-class"></a><h3>gupnp_cds_last_change_entry_get_class ()</h3>
+<pre class="programlisting">const <span class="returnvalue">char</span> *        gupnp_cds_last_change_entry_get_class
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEntry"><span class="type">GUPnPCDSLastChangeEntry</span></a> *entry</code></em>);</pre>
+<p>
+Get the class of the object in this change entry. This is only
+valid if <a class="link" href="GUPnPCDSLastChangeParser.html#gupnp-cds-last-change-entry-get-event" title="gupnp_cds_last_change_entry_get_event ()"><code class="function">gupnp_cds_last_change_entry_get_event()</code></a> returns
+<code class="literal">GUPNP_CDS_LAST_CHANGE_EVENT_OBJECT_ADDED</code>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>entry</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEntry"><span class="type">GUPnPCDSLastChangeEntry</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The upnp class of the object of this entry. <span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-cds-last-change-entry-is-subtree-update"></a><h3>gupnp_cds_last_change_entry_is_subtree_update ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            gupnp_cds_last_change_entry_is_subtree_update
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEntry"><span class="type">GUPnPCDSLastChangeEntry</span></a> *entry</code></em>);</pre>
+<p>
+Returns whether this entry is part of a subtree update.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>entry</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEntry"><span class="type">GUPnPCDSLastChangeEntry</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code>, if the entry is part of a subtree update, <code class="literal">FALSE</code> otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-cds-last-change-entry-get-update-id"></a><h3>gupnp_cds_last_change_entry_get_update_id ()</h3>
+<pre class="programlisting"><span class="returnvalue">guint32</span>             gupnp_cds_last_change_entry_get_update_id
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEntry"><span class="type">GUPnPCDSLastChangeEntry</span></a> *entry</code></em>);</pre>
+<p>
+Get the update id of the last change entry.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>entry</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEntry"><span class="type">GUPnPCDSLastChangeEntry</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>update id of the entry or 0 if the entry is not valid.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.18</div>
+</body>
+</html>
