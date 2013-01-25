@@ -1,3 +1,6 @@
+* Fri Jan 24 2013 Mark Ryan <mark.d.ryan@intel.com> submit/2.0alpha/20130107.124717@4255ee1
+- Updated GUPnP-AV to version 11.7 (a48bbd0)
+
 * Mon Jan 07 2013 Mark Ryan <mark.d.ryan@intel.com> 
 - Fix bug TIVI-431
 
