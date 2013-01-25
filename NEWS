@@ -1,3 +1,78 @@
+0.11.6
+======
+
+Changes since 0.11.5:
+- Fix an unitialized variable.
+- Fix a wrong use of BAD_CAST.
+- Fix handling of updateID in the CDS LastChange parser.
+- Fix CDS LastChange test.
+
+All contributors to this release:
+
+Jens Georg <jensg@openismus.com>
+Mark Ryan <mark.d.ryan@intel.com>
+
+Bugs fixed in this release:
+ - https://bugzilla.gnome.org/show_bug.cgi?id=689701
+ - https://bugzilla.gnome.org/show_bug.cgi?id=689808
+
+0.11.5
+======
+
+Changes since 0.11.4:
+- Fix API definition in gupnp-cds-last-change-parser.h
+- Set items in a media collection to "restricted" by default.
+
+All contributors to this release:
+
+Jens Georg <jensg@openismus.com>
+Ludovic Ferrandis <ludovic.ferrandis@intel.com>
+
+Bugs fixed in this release:
+ - https://bugzilla.gnome.org/show_bug.cgi?id=689517
+
+0.11.4
+======
+
+Changes since 0.11.3:
+- Fix DIDL_S parsing issues in GUPnPMediaCollection.
+- Fix reference count issues in GUPnPMediaCollection.
+- Add more tests for GUPnPMediaCollection.
+- Add test for LastChange parser.
+- Fix LD_LIBRARAY_PATH handling on make check.
+- Silence XSD validation errors on make check.
+- Silence makefile portability warnings.
+- Some gtk-doc fixes.
+- Add LastChange parser for LastChange in ContentDirectory:3 including tests.
+
+All contributors to this release:
+
+Jens Georg <jensg@openismus.com>
+Krzesimir Nowak <krnowak@openismus.com>
+Regis Merlino <regis.merlino@intel.com>
+
+Bugs fixed in this release:
+ - https://bugzilla.gnome.org/show_bug.cgi?id=689094
+ - https://bugzilla.gnome.org/show_bug.cgi?id=689141
+ - https://bugzilla.gnome.org/show_bug.cgi?id=689276
+
+0.11.3
+======
+
+Changes since 0.11.2:
+- Fix documentation generation for recently added functionality.
+- Tweak XSD files to make the validation shut up completely.
+- Fix an issue in the DIDL-Lite filtering.
+- Add new class GUPnPMediaCollection for parsing and creation of DIDL_S
+  playlists.
+
+All contributors to this release:
+
+Jens Georg <jensg@openismus.com>
+
+Bugs fixed in this release:
+ - https://bugzilla.gnome.org/show_bug.cgi?id=687462
+
 0.11.2
 ======
 

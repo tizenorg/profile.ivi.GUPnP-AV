@@ -43,6 +43,7 @@
 <a name="GUPnPDIDLLiteObject.synopsis"></a><h2>Synopsis</h2>
 <pre class="synopsis">                    <a class="link" href="GUPnPDIDLLiteObject.html#GUPnPDIDLLiteObject-struct" title="GUPnPDIDLLiteObject">GUPnPDIDLLiteObject</a>;
 enum                <a class="link" href="GUPnPDIDLLiteObject.html#GUPnPOCMFlags" title="enum GUPnPOCMFlags">GUPnPOCMFlags</a>;
+enum                <a class="link" href="GUPnPDIDLLiteObject.html#GUPnPDIDLLiteFragmentResult" title="enum GUPnPDIDLLiteFragmentResult">GUPnPDIDLLiteFragmentResult</a>;
 <span class="returnvalue">xmlNode</span> *           <a class="link" href="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-get-xml-node" title="gupnp_didl_lite_object_get_xml_node ()">gupnp_didl_lite_object_get_xml_node</a> (<em class="parameter"><code><a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a> *object</code></em>);
 <span class="returnvalue">xmlNsPtr</span>            <a class="link" href="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-get-upnp-namespace" title="gupnp_didl_lite_object_get_upnp_namespace ()">gupnp_didl_lite_object_get_upnp_namespace</a>
                                                         (<em class="parameter"><code><a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a> *object</code></em>);
@@ -138,6 +139,35 @@ const <span class="returnvalue">char</span> *        <a class="link" href="GUPnP
 <span class="returnvalue">void</span>                <a class="link" href="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-set-dlna-managed" title="gupnp_didl_lite_object_set_dlna_managed ()">gupnp_didl_lite_object_set_dlna_managed</a>
                                                         (<em class="parameter"><code><a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a> *object</code></em>,
                                                          <em class="parameter"><code><a class="link" href="GUPnPDIDLLiteObject.html#GUPnPOCMFlags" title="enum GUPnPOCMFlags"><span class="type">GUPnPOCMFlags</span></a> dlna_managed</code></em>);
+<a class="link" href="GUPnPDIDLLiteObject.html#GUPnPDIDLLiteFragmentResult" title="enum GUPnPDIDLLiteFragmentResult"><span class="returnvalue">GUPnPDIDLLiteFragmentResult</span></a> <a class="link" href="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-apply-fragments" title="gupnp_didl_lite_object_apply_fragments ()">gupnp_didl_lite_object_apply_fragments</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a> *object</code></em>,
+                                                         <em class="parameter"><code><span class="type">gchar</span> **current_fragments</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> current_size</code></em>,
+                                                         <em class="parameter"><code><span class="type">gchar</span> **new_fragments</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> new_size</code></em>);
+<span class="returnvalue">char</span> *              <a class="link" href="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-get-album-xml-string" title="gupnp_didl_lite_object_get_album_xml_string ()">gupnp_didl_lite_object_get_album_xml_string</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a> *object</code></em>);
+<span class="returnvalue">char</span> *              <a class="link" href="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-get-artists-xml-string" title="gupnp_didl_lite_object_get_artists_xml_string ()">gupnp_didl_lite_object_get_artists_xml_string</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a> *object</code></em>);
+<span class="returnvalue">char</span> *              <a class="link" href="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-get-date-xml-string" title="gupnp_didl_lite_object_get_date_xml_string ()">gupnp_didl_lite_object_get_date_xml_string</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a> *object</code></em>);
+<span class="returnvalue">char</span> *              <a class="link" href="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-get-title-xml-string" title="gupnp_didl_lite_object_get_title_xml_string ()">gupnp_didl_lite_object_get_title_xml_string</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a> *object</code></em>);
+<span class="returnvalue">char</span> *              <a class="link" href="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-get-track-number-xml-string" title="gupnp_didl_lite_object_get_track_number_xml_string ()">gupnp_didl_lite_object_get_track_number_xml_string</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a> *object</code></em>);
+<span class="returnvalue">guint</span>               <a class="link" href="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-get-update-id" title="gupnp_didl_lite_object_get_update_id ()">gupnp_didl_lite_object_get_update_id</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a> *object</code></em>);
+<span class="returnvalue">char</span> *              <a class="link" href="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-get-upnp-class-xml-string" title="gupnp_didl_lite_object_get_upnp_class_xml_string ()">gupnp_didl_lite_object_get_upnp_class_xml_string</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a> *object</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-set-update-id" title="gupnp_didl_lite_object_set_update_id ()">gupnp_didl_lite_object_set_update_id</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a> *object</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint</span> update_id</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-unset-artists" title="gupnp_didl_lite_object_unset_artists ()">gupnp_didl_lite_object_unset_artists</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a> *object</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-unset-update-id" title="gupnp_didl_lite_object_unset_update_id ()">gupnp_didl_lite_object_unset_update_id</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a> *object</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-update-id-is-set" title="gupnp_didl_lite_object_update_id_is_set ()">gupnp_didl_lite_object_update_id_is_set</a>
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a> *object</code></em>);
 </pre>
 </div>
 <div class="refsect1">
@@ -238,6 +268,83 @@ Interoperability Guidelines Volume 1, October 2006.
 <tr>
 <td><p><a name="GUPNP-OCM-FLAGS-CHANGE-METADATA:CAPS"></a><span class="term"><code class="literal">GUPNP_OCM_FLAGS_CHANGE_METADATA</code></span></p></td>
 <td>Indicates support for changing metadata.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GUPnPDIDLLiteFragmentResult"></a><h3>enum GUPnPDIDLLiteFragmentResult</h3>
+<pre class="programlisting">typedef enum {
+      GUPNP_DIDL_LITE_FRAGMENT_RESULT_OK,
+      GUPNP_DIDL_LITE_FRAGMENT_RESULT_CURRENT_BAD_XML,
+      GUPNP_DIDL_LITE_FRAGMENT_RESULT_NEW_BAD_XML,
+      GUPNP_DIDL_LITE_FRAGMENT_RESULT_CURRENT_INVALID,
+      GUPNP_DIDL_LITE_FRAGMENT_RESULT_NEW_INVALID,
+      GUPNP_DIDL_LITE_FRAGMENT_RESULT_REQUIRED_TAG,
+      GUPNP_DIDL_LITE_FRAGMENT_RESULT_READONLY_TAG,
+      GUPNP_DIDL_LITE_FRAGMENT_RESULT_MISMATCH,
+      GUPNP_DIDL_LITE_FRAGMENT_RESULT_UNKNOWN_ERROR
+} GUPnPDIDLLiteFragmentResult;
+</pre>
+<p>
+Possible return values of the <a class="link" href="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-apply-fragments" title="gupnp_didl_lite_object_apply_fragments ()"><code class="function">gupnp_didl_lite_object_apply_fragments()</code></a> call.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><a name="GUPNP-DIDL-LITE-FRAGMENT-RESULT-OK:CAPS"></a><span class="term"><code class="literal">GUPNP_DIDL_LITE_FRAGMENT_RESULT_OK</code></span></p></td>
+<td>Operation succeeded.
+</td>
+</tr>
+<tr>
+<td><p><a name="GUPNP-DIDL-LITE-FRAGMENT-RESULT-CURRENT-BAD-XML:CAPS"></a><span class="term"><code class="literal">GUPNP_DIDL_LITE_FRAGMENT_RESULT_CURRENT_BAD_XML</code></span></p></td>
+<td>Current set of fragments
+is bad XML
+</td>
+</tr>
+<tr>
+<td><p><a name="GUPNP-DIDL-LITE-FRAGMENT-RESULT-NEW-BAD-XML:CAPS"></a><span class="term"><code class="literal">GUPNP_DIDL_LITE_FRAGMENT_RESULT_NEW_BAD_XML</code></span></p></td>
+<td>New set of fragments is bad
+XML
+</td>
+</tr>
+<tr>
+<td><p><a name="GUPNP-DIDL-LITE-FRAGMENT-RESULT-CURRENT-INVALID:CAPS"></a><span class="term"><code class="literal">GUPNP_DIDL_LITE_FRAGMENT_RESULT_CURRENT_INVALID</code></span></p></td>
+<td>Current set of fragments
+is invalid
+</td>
+</tr>
+<tr>
+<td><p><a name="GUPNP-DIDL-LITE-FRAGMENT-RESULT-NEW-INVALID:CAPS"></a><span class="term"><code class="literal">GUPNP_DIDL_LITE_FRAGMENT_RESULT_NEW_INVALID</code></span></p></td>
+<td>New set of fragments is
+invalid
+</td>
+</tr>
+<tr>
+<td><p><a name="GUPNP-DIDL-LITE-FRAGMENT-RESULT-REQUIRED-TAG:CAPS"></a><span class="term"><code class="literal">GUPNP_DIDL_LITE_FRAGMENT_RESULT_REQUIRED_TAG</code></span></p></td>
+<td>Trying to remove a required
+tag
+</td>
+</tr>
+<tr>
+<td><p><a name="GUPNP-DIDL-LITE-FRAGMENT-RESULT-READONLY-TAG:CAPS"></a><span class="term"><code class="literal">GUPNP_DIDL_LITE_FRAGMENT_RESULT_READONLY_TAG</code></span></p></td>
+<td>Trying to modify or remove a
+read-only tag
+</td>
+</tr>
+<tr>
+<td><p><a name="GUPNP-DIDL-LITE-FRAGMENT-RESULT-MISMATCH:CAPS"></a><span class="term"><code class="literal">GUPNP_DIDL_LITE_FRAGMENT_RESULT_MISMATCH</code></span></p></td>
+<td>Length of the two fragment sets
+does not match
+</td>
+</tr>
+<tr>
+<td><p><a name="GUPNP-DIDL-LITE-FRAGMENT-RESULT-UNKNOWN-ERROR:CAPS"></a><span class="term"><code class="literal">GUPNP_DIDL_LITE_FRAGMENT_RESULT_UNKNOWN_ERROR</code></span></p></td>
+<td>General error sink if none
+of the others applies.
 </td>
 </tr>
 </tbody>
@@ -1381,6 +1488,301 @@ Set the 'dlna:dlnaManaged' attribute of the <em class="parameter"><code>object</
 <tr>
 <td><p><span class="term"><em class="parameter"><code>dlna_managed</code></em> :</span></p></td>
 <td>The <a class="link" href="GUPnPDIDLLiteObject.html#GUPnPOCMFlags" title="enum GUPnPOCMFlags"><span class="type">GUPnPOCMFlags</span></a>.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-didl-lite-object-apply-fragments"></a><h3>gupnp_didl_lite_object_apply_fragments ()</h3>
+<pre class="programlisting"><a class="link" href="GUPnPDIDLLiteObject.html#GUPnPDIDLLiteFragmentResult" title="enum GUPnPDIDLLiteFragmentResult"><span class="returnvalue">GUPnPDIDLLiteFragmentResult</span></a> gupnp_didl_lite_object_apply_fragments
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a> *object</code></em>,
+                                                         <em class="parameter"><code><span class="type">gchar</span> **current_fragments</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> current_size</code></em>,
+                                                         <em class="parameter"><code><span class="type">gchar</span> **new_fragments</code></em>,
+                                                         <em class="parameter"><code><span class="type">gint</span> new_size</code></em>);</pre>
+<p>
+Updates object by applying <em class="parameter"><code>new_fragments</code></em> in places of
+<em class="parameter"><code>current_fragments</code></em>. For <em class="parameter"><code>current_size</code></em> and <em class="parameter"><code>new_size</code></em> -1 can be
+passed when respectively <em class="parameter"><code>current_fragments</code></em> and <em class="parameter"><code>new_fragments</code></em> are
+NULL terminated.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
+<td>The <a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>current_fragments</code></em> :</span></p></td>
+<td>XML
+fragments of <em class="parameter"><code>object</code></em>. <span class="annotation">[<acronym title="Parameter points to an array of items."><span class="acronym">array</span></acronym> length=current_size][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>current_size</code></em> :</span></p></td>
+<td>Size of <em class="parameter"><code>current_fragments</code></em> or -1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>new_fragments</code></em> :</span></p></td>
+<td>Substitutes
+for <em class="parameter"><code>current_fragments</code></em>. <span class="annotation">[<acronym title="Parameter points to an array of items."><span class="acronym">array</span></acronym> length=new_size][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>new_size</code></em> :</span></p></td>
+<td>Size of <em class="parameter"><code>new_fragments</code></em> or -1.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>Result of operation.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-didl-lite-object-get-album-xml-string"></a><h3>gupnp_didl_lite_object_get_album_xml_string ()</h3>
+<pre class="programlisting"><span class="returnvalue">char</span> *              gupnp_didl_lite_object_get_album_xml_string
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a> *object</code></em>);</pre>
+<p>
+Creates a string representation of the DIDL-Lite XML fragment related to the
+object album.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A DIDL-Lite XML fragment string, or <code class="literal">NULL</code>. <span class="type">g_free</span> after usage.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-didl-lite-object-get-artists-xml-string"></a><h3>gupnp_didl_lite_object_get_artists_xml_string ()</h3>
+<pre class="programlisting"><span class="returnvalue">char</span> *              gupnp_didl_lite_object_get_artists_xml_string
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a> *object</code></em>);</pre>
+<p>
+Creates a string representation of the DIDL-Lite XML fragments related to the
+object artists.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A DIDL-Lite XML fragment string, or <code class="literal">NULL</code>. <span class="type">g_free</span> after usage.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-didl-lite-object-get-date-xml-string"></a><h3>gupnp_didl_lite_object_get_date_xml_string ()</h3>
+<pre class="programlisting"><span class="returnvalue">char</span> *              gupnp_didl_lite_object_get_date_xml_string
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a> *object</code></em>);</pre>
+<p>
+Creates a string representation of the DIDL-Lite XML fragment related to the
+object date.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A DIDL-Lite XML fragment string, or <code class="literal">NULL</code>. <span class="type">g_free</span> after usage.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-didl-lite-object-get-title-xml-string"></a><h3>gupnp_didl_lite_object_get_title_xml_string ()</h3>
+<pre class="programlisting"><span class="returnvalue">char</span> *              gupnp_didl_lite_object_get_title_xml_string
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a> *object</code></em>);</pre>
+<p>
+Creates a string representation of the DIDL-Lite XML fragment related to the
+object title.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A DIDL-Lite XML fragment string, or <code class="literal">NULL</code>. <span class="type">g_free</span> after usage.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-didl-lite-object-get-track-number-xml-string"></a><h3>gupnp_didl_lite_object_get_track_number_xml_string ()</h3>
+<pre class="programlisting"><span class="returnvalue">char</span> *              gupnp_didl_lite_object_get_track_number_xml_string
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a> *object</code></em>);</pre>
+<p>
+Creates a string representation of the DIDL-Lite XML fragment related to the
+object track number.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A DIDL-Lite XML fragment string, or <code class="literal">NULL</code>. <span class="type">g_free</span> after usage.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-didl-lite-object-get-update-id"></a><h3>gupnp_didl_lite_object_get_update_id ()</h3>
+<pre class="programlisting"><span class="returnvalue">guint</span>               gupnp_didl_lite_object_get_update_id
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a> *object</code></em>);</pre>
+<p>
+Get the update ID of the <em class="parameter"><code>object</code></em>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
+<td><a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a></td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The update ID of the <em class="parameter"><code>object</code></em>.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-didl-lite-object-get-upnp-class-xml-string"></a><h3>gupnp_didl_lite_object_get_upnp_class_xml_string ()</h3>
+<pre class="programlisting"><span class="returnvalue">char</span> *              gupnp_didl_lite_object_get_upnp_class_xml_string
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a> *object</code></em>);</pre>
+<p>
+Creates a string representation of the DIDL-Lite XML fragment related to the
+object UPnP class.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
+<td>A <a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>A DIDL-Lite XML fragment string, or <code class="literal">NULL</code>. <span class="type">g_free</span> after usage.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-didl-lite-object-set-update-id"></a><h3>gupnp_didl_lite_object_set_update_id ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gupnp_didl_lite_object_set_update_id
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a> *object</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint</span> update_id</code></em>);</pre>
+<p>
+Set the update ID of the <em class="parameter"><code>object</code></em>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
+<td><a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a></td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>update_id</code></em> :</span></p></td>
+<td>Update ID</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-didl-lite-object-unset-artists"></a><h3>gupnp_didl_lite_object_unset_artists ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gupnp_didl_lite_object_unset_artists
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a> *object</code></em>);</pre>
+<p>
+Unset the artists properties of the <em class="parameter"><code>object</code></em>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
+<td><a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a></td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-didl-lite-object-unset-update-id"></a><h3>gupnp_didl_lite_object_unset_update_id ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gupnp_didl_lite_object_unset_update_id
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a> *object</code></em>);</pre>
+<p>
+Unset the update ID property of the <em class="parameter"><code>object</code></em>.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
+<td><a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a></td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-didl-lite-object-update-id-is-set"></a><h3>gupnp_didl_lite_object_update_id_is_set ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            gupnp_didl_lite_object_update_id_is_set
+                                                        (<em class="parameter"><code><a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a> *object</code></em>);</pre>
+<p>
+Get whether the update ID of the <em class="parameter"><code>object</code></em> is set.
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>object</code></em> :</span></p></td>
+<td><a class="link" href="GUPnPDIDLLiteObject.html" title="GUPnPDIDLLiteObject"><span class="type">GUPnPDIDLLiteObject</span></a></td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if update ID is set, otherwise <code class="literal">FALSE</code>
+</td>
 </tr>
 </tbody>
 </table></div>

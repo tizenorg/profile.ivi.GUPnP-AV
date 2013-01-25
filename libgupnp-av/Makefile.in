@@ -108,10 +108,11 @@ am_libgupnp_av_1_0_la_OBJECTS = gupnp-didl-lite-object.lo \
 	gupnp-didl-lite-resource.lo gupnp-didl-lite-descriptor.lo \
 	gupnp-didl-lite-contributor.lo gupnp-didl-lite-writer.lo \
 	gupnp-protocol-info.lo gupnp-search-criteria-parser.lo \
-	gupnp-last-change-parser.lo gupnp-feature.lo \
+	gupnp-last-change-parser.lo gupnp-cds-last-change-parser.lo \
+	gupnp-media-collection.lo gupnp-feature.lo \
 	gupnp-feature-list-parser.lo gupnp-dlna.lo gupnp-av-error.lo \
-	xml-util.lo gvalue-util.lo fragment-util.lo xsd-data.lo \
-	$(am__objects_1)
+	xml-util.lo gvalue-util.lo fragment-util.lo time-utils.lo \
+	xsd-data.lo $(am__objects_1)
 libgupnp_av_1_0_la_OBJECTS = $(am_libgupnp_av_1_0_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -320,6 +321,8 @@ libgupnp_av_inc_HEADERS = gupnp-didl-lite-object.h \
 			  gupnp-protocol-info.h \
 		          gupnp-search-criteria-parser.h \
 			  gupnp-last-change-parser.h \
+			  gupnp-cds-last-change-parser.h \
+			  gupnp-media-collection.h \
 			  gupnp-feature.h \
 			  gupnp-feature-list-parser.h \
 			  gupnp-dlna.h \
@@ -336,6 +339,7 @@ libgupnp_av_1_0_la_SOURCES = gupnp-didl-lite-object.c \
 			     gupnp-didl-lite-createclass.c \
 			     gupnp-didl-lite-createclass-private.h \
 			     gupnp-didl-lite-parser.c \
+			     gupnp-didl-lite-parser-private.h \
 			     gupnp-didl-lite-resource.c \
 			     gupnp-didl-lite-resource-private.h \
 			     gupnp-didl-lite-descriptor.c \
@@ -343,9 +347,12 @@ libgupnp_av_1_0_la_SOURCES = gupnp-didl-lite-object.c \
 			     gupnp-didl-lite-contributor.c \
 			     gupnp-didl-lite-contributor-private.h \
 			     gupnp-didl-lite-writer.c \
+			     gupnp-didl-lite-writer-private.h \
 			     gupnp-protocol-info.c \
 			     gupnp-search-criteria-parser.c \
 			     gupnp-last-change-parser.c \
+			     gupnp-cds-last-change-parser.c \
+			     gupnp-media-collection.c \
 			     gupnp-feature.c \
 			     gupnp-feature-list-parser.c \
 			     gupnp-dlna.c \
@@ -356,6 +363,8 @@ libgupnp_av_1_0_la_SOURCES = gupnp-didl-lite-object.c \
 			     gvalue-util.h \
 			     fragment-util.c \
 			     fragment-util.h \
+			     time-utils.c \
+			     time-utils.h \
 			     xsd-data.c \
 			     xsd-data.h \
 			     $(BUILT_SOURCES)
@@ -380,6 +389,8 @@ INTROSPECTION_COMPILER_ARGS = --includedir=$(srcdir)
 @HAVE_INTROSPECTION_TRUE@	    $(top_srcdir)/libgupnp-av/gupnp-protocol-info.c \
 @HAVE_INTROSPECTION_TRUE@	    $(top_srcdir)/libgupnp-av/gupnp-search-criteria-parser.c \
 @HAVE_INTROSPECTION_TRUE@	    $(top_srcdir)/libgupnp-av/gupnp-last-change-parser.c \
+@HAVE_INTROSPECTION_TRUE@	    $(top_srcdir)/libgupnp-av/gupnp-cds-last-change-parser.c \
+@HAVE_INTROSPECTION_TRUE@	    $(top_srcdir)/libgupnp-av/gupnp-media-collection.c \
 @HAVE_INTROSPECTION_TRUE@	    $(top_srcdir)/libgupnp-av/gupnp-feature.c \
 @HAVE_INTROSPECTION_TRUE@	    $(top_srcdir)/libgupnp-av/gupnp-feature-list-parser.c \
 @HAVE_INTROSPECTION_TRUE@	    $(top_srcdir)/libgupnp-av/gupnp-dlna.c \
@@ -477,6 +488,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/fragment-util.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gupnp-av-error.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gupnp-av-marshal.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gupnp-cds-last-change-parser.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gupnp-didl-lite-container.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gupnp-didl-lite-contributor.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gupnp-didl-lite-createclass.Plo@am__quote@
@@ -490,9 +502,11 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gupnp-feature-list-parser.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gupnp-feature.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gupnp-last-change-parser.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gupnp-media-collection.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gupnp-protocol-info.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gupnp-search-criteria-parser.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gvalue-util.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/time-utils.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xml-util.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xsd-data.Plo@am__quote@
 

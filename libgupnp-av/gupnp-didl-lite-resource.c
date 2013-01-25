@@ -35,9 +35,7 @@
 
 #include "gupnp-didl-lite-resource.h"
 #include "xml-util.h"
-
-#define SEC_PER_MIN 60
-#define SEC_PER_HOUR 3600
+#include "time-utils.h"
 
 G_DEFINE_TYPE (GUPnPDIDLLiteResource,
                gupnp_didl_lite_resource,
@@ -104,31 +102,6 @@ get_resolution_info (GUPnPDIDLLiteResource *resource,
 
 return_point:
         g_strfreev (tokens);
-}
-
-static long
-seconds_from_time (const char *time_str)
-{
-        char **tokens;
-        gdouble seconds = -1;
-
-        if (time_str == NULL)
-                return -1;
-
-        tokens = g_strsplit (time_str, ":", -1);
-        if (tokens[0] == NULL ||
-            tokens[1] == NULL ||
-            tokens[2] == NULL)
-                goto return_point;
-
-        seconds = g_strtod (tokens[2], NULL);
-        seconds += g_strtod (tokens[1], NULL) * SEC_PER_MIN;
-        seconds += g_strtod (tokens[0], NULL) * SEC_PER_HOUR;
-
-return_point:
-        g_strfreev (tokens);
-
-        return (long) seconds;
 }
 
 static void
@@ -822,10 +795,10 @@ gupnp_didl_lite_resource_get_protocol_info (GUPnPDIDLLiteResource *resource)
  *
  * Return value: The size (in bytes) of the @resource or -1.
  **/
-long
+glong
 gupnp_didl_lite_resource_get_size (GUPnPDIDLLiteResource *resource)
 {
-    return (long) gupnp_didl_lite_resource_get_size64 (resource);
+    return (glong) gupnp_didl_lite_resource_get_size64 (resource);
 }
 
 /**
@@ -855,7 +828,7 @@ gupnp_didl_lite_resource_get_size64 (GUPnPDIDLLiteResource *resource)
  *
  * Return value: The duration (in seconds) of the @resource or -1.
  **/
-long
+glong
 gupnp_didl_lite_resource_get_duration (GUPnPDIDLLiteResource *resource)
 {
         const char *duration_str;
@@ -1159,7 +1132,7 @@ gupnp_didl_lite_resource_set_protocol_info (GUPnPDIDLLiteResource *resource,
  **/
 void
 gupnp_didl_lite_resource_set_size (GUPnPDIDLLiteResource *resource,
-                                   long                   size)
+                                   glong                  size)
 {
         gupnp_didl_lite_resource_set_size64 (resource, size);
 }
@@ -1210,7 +1183,7 @@ gupnp_didl_lite_resource_set_size64 (GUPnPDIDLLiteResource *resource,
  **/
 void
 gupnp_didl_lite_resource_set_duration (GUPnPDIDLLiteResource *resource,
-                                       long                   duration)
+                                       glong                  duration)
 {
         g_return_if_fail (GUPNP_IS_DIDL_LITE_RESOURCE (resource));
 
@@ -1220,10 +1193,7 @@ gupnp_didl_lite_resource_set_duration (GUPnPDIDLLiteResource *resource,
         else {
                 char *str;
 
-                str = g_strdup_printf ("%ld:%.2ld:%.2ld.000",
-                                       duration / (60 * 60),
-                                       (duration / 60) % 60,
-                                       duration % 60);
+                str = seconds_to_time (duration);
                 xmlSetProp (resource->priv->xml_node,
                             (unsigned char *) "duration",
                             (unsigned char *) str);

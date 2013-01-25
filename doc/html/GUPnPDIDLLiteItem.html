@@ -45,6 +45,9 @@
 const <span class="returnvalue">char</span> *        <a class="link" href="GUPnPDIDLLiteItem.html#gupnp-didl-lite-item-get-ref-id" title="gupnp_didl_lite_item_get_ref_id ()">gupnp_didl_lite_item_get_ref_id</a>     (<em class="parameter"><code><a class="link" href="GUPnPDIDLLiteItem.html" title="GUPnPDIDLLiteItem"><span class="type">GUPnPDIDLLiteItem</span></a> *item</code></em>);
 <span class="returnvalue">void</span>                <a class="link" href="GUPnPDIDLLiteItem.html#gupnp-didl-lite-item-set-ref-id" title="gupnp_didl_lite_item_set_ref_id ()">gupnp_didl_lite_item_set_ref_id</a>     (<em class="parameter"><code><a class="link" href="GUPnPDIDLLiteItem.html" title="GUPnPDIDLLiteItem"><span class="type">GUPnPDIDLLiteItem</span></a> *item</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *ref_id</code></em>);
+<span class="returnvalue">glong</span>               <a class="link" href="GUPnPDIDLLiteItem.html#gupnp-didl-lite-item-get-lifetime" title="gupnp_didl_lite_item_get_lifetime ()">gupnp_didl_lite_item_get_lifetime</a>   (<em class="parameter"><code><a class="link" href="GUPnPDIDLLiteItem.html" title="GUPnPDIDLLiteItem"><span class="type">GUPnPDIDLLiteItem</span></a> *item</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="GUPnPDIDLLiteItem.html#gupnp-didl-lite-item-set-lifetime" title="gupnp_didl_lite_item_set_lifetime ()">gupnp_didl_lite_item_set_lifetime</a>   (<em class="parameter"><code><a class="link" href="GUPnPDIDLLiteItem.html" title="GUPnPDIDLLiteItem"><span class="type">GUPnPDIDLLiteItem</span></a> *item</code></em>,
+                                                         <em class="parameter"><code><span class="type">glong</span> lifetime</code></em>);
 </pre>
 </div>
 <div class="refsect1">
@@ -58,6 +61,7 @@ const <span class="returnvalue">char</span> *        <a class="link" href="GUPnP
 <div class="refsect1">
 <a name="GUPnPDIDLLiteItem.properties"></a><h2>Properties</h2>
 <pre class="synopsis">
+  "<a class="link" href="GUPnPDIDLLiteItem.html#GUPnPDIDLLiteItem--lifetime" title='The "lifetime" property'>lifetime</a>"                 <span class="type">glong</span>                 : Read / Write
   "<a class="link" href="GUPnPDIDLLiteItem.html#GUPnPDIDLLiteItem--ref-id" title='The "ref-id" property'>ref-id</a>"                   <span class="type">gchar</span>*                : Read / Write
 </pre>
 </div>
@@ -116,9 +120,56 @@ Set the ref ID of the <em class="parameter"><code>item</code></em>.
 </tbody>
 </table></div>
 </div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-didl-lite-item-get-lifetime"></a><h3>gupnp_didl_lite_item_get_lifetime ()</h3>
+<pre class="programlisting"><span class="returnvalue">glong</span>               gupnp_didl_lite_item_get_lifetime   (<em class="parameter"><code><a class="link" href="GUPnPDIDLLiteItem.html" title="GUPnPDIDLLiteItem"><span class="type">GUPnPDIDLLiteItem</span></a> *item</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>item</code></em> :</span></p></td>
+<td><a class="link" href="GUPnPDIDLLiteItem.html" title="GUPnPDIDLLiteItem"><span class="type">GUPnPDIDLLiteItem</span></a></td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>-1 if unset or the lifetime (in seconds) of the current item.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gupnp-didl-lite-item-set-lifetime"></a><h3>gupnp_didl_lite_item_set_lifetime ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gupnp_didl_lite_item_set_lifetime   (<em class="parameter"><code><a class="link" href="GUPnPDIDLLiteItem.html" title="GUPnPDIDLLiteItem"><span class="type">GUPnPDIDLLiteItem</span></a> *item</code></em>,
+                                                         <em class="parameter"><code><span class="type">glong</span> lifetime</code></em>);</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>item</code></em> :</span></p></td>
+<td><a class="link" href="GUPnPDIDLLiteItem.html" title="GUPnPDIDLLiteItem"><span class="type">GUPnPDIDLLiteItem</span></a></td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>lifetime</code></em> :</span></p></td>
+<td>The lifetime (in seconds) of this item in a media collection.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
 </div>
 <div class="refsect1">
 <a name="GUPnPDIDLLiteItem.property-details"></a><h2>Property Details</h2>
+<div class="refsect2">
+<a name="GUPnPDIDLLiteItem--lifetime"></a><h3>The <code class="literal">"lifetime"</code> property</h3>
+<pre class="programlisting">  "lifetime"                 <span class="type">glong</span>                 : Read / Write</pre>
+<p>
+The lifetime in seconds of this DIDLLite item in a media collection.
+</p>
+<p>Allowed values: &gt;= -1</p>
+<p>Default value: -1</p>
+</div>
+<hr>
 <div class="refsect2">
 <a name="GUPnPDIDLLiteItem--ref-id"></a><h3>The <code class="literal">"ref-id"</code> property</h3>
 <pre class="programlisting">  "ref-id"                   <span class="type">gchar</span>*                : Read / Write</pre>
