@@ -41,16 +41,16 @@
 <a name="GUPnPFeatureListParser.synopsis"></a><h2>Synopsis</h2>
 <pre class="synopsis">                    <a class="link" href="GUPnPFeatureListParser.html#GUPnPFeatureListParser-struct" title="GUPnPFeatureListParser">GUPnPFeatureListParser</a>;
 <a class="link" href="GUPnPFeatureListParser.html" title="GUPnPFeatureListParser"><span class="returnvalue">GUPnPFeatureListParser</span></a> * <a class="link" href="GUPnPFeatureListParser.html#gupnp-feature-list-parser-new" title="gupnp_feature_list_parser_new ()">gupnp_feature_list_parser_new</a>  (<em class="parameter"><code><span class="type">void</span></code></em>);
-<span class="returnvalue">GList</span> *             <a class="link" href="GUPnPFeatureListParser.html#gupnp-feature-list-parser-parse-text" title="gupnp_feature_list_parser_parse_text ()">gupnp_feature_list_parser_parse_text</a>
+<a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *             <a class="link" href="GUPnPFeatureListParser.html#gupnp-feature-list-parser-parse-text" title="gupnp_feature_list_parser_parse_text ()">gupnp_feature_list_parser_parse_text</a>
                                                         (<em class="parameter"><code><a class="link" href="GUPnPFeatureListParser.html" title="GUPnPFeatureListParser"><span class="type">GUPnPFeatureListParser</span></a> *parser</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *text</code></em>,
-                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);
 </pre>
 </div>
 <div class="refsect1">
 <a name="GUPnPFeatureListParser.object-hierarchy"></a><h2>Object Hierarchy</h2>
 <pre class="synopsis">
-  GObject
+  <a href="http://library.gnome.org/devel/gobject/unstable/gobject-The-Base-Object-Type.html#GObject">GObject</a>
    +----GUPnPFeatureListParser
 </pre>
 </div>
@@ -82,10 +82,10 @@ FeatureList state variable.
 <hr>
 <div class="refsect2">
 <a name="gupnp-feature-list-parser-parse-text"></a><h3>gupnp_feature_list_parser_parse_text ()</h3>
-<pre class="programlisting"><span class="returnvalue">GList</span> *             gupnp_feature_list_parser_parse_text
+<pre class="programlisting"><a href="http://library.gnome.org/devel/glib/unstable/glib-Doubly-Linked-Lists.html#GList"><span class="returnvalue">GList</span></a> *             gupnp_feature_list_parser_parse_text
                                                         (<em class="parameter"><code><a class="link" href="GUPnPFeatureListParser.html" title="GUPnPFeatureListParser"><span class="type">GUPnPFeatureListParser</span></a> *parser</code></em>,
                                                          <em class="parameter"><code>const <span class="type">char</span> *text</code></em>,
-                                                         <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+                                                         <em class="parameter"><code><a href="http://library.gnome.org/devel/glib/unstable/glib-Error-Reporting.html#GError"><span class="type">GError</span></a> **error</code></em>);</pre>
 <p>
 Parses <em class="parameter"><code>text</code></em> and returns the list of available features.
 If an error occured <em class="parameter"><code>error</code></em> will be set.
@@ -109,7 +109,7 @@ If an error occured <em class="parameter"><code>error</code></em> will be set.
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>The list of
-features or <code class="literal">NULL</code> if an error occured. <span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>][<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GUPnPFeature]</span>
+features or <a href="http://library.gnome.org/devel/glib/unstable/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> if an error occured. <span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>][<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GUPnPFeature]</span>
 </td>
 </tr>
 </tbody>
