@@ -91,6 +91,7 @@
 <ANCHOR id="gupnp-didl-lite-object-get-track-number-xml-string" href="gupnp-av/GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-get-track-number-xml-string">
 <ANCHOR id="gupnp-didl-lite-object-get-update-id" href="gupnp-av/GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-get-update-id">
 <ANCHOR id="gupnp-didl-lite-object-get-upnp-class-xml-string" href="gupnp-av/GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-get-upnp-class-xml-string">
+<ANCHOR id="gupnp-didl-lite-object-get-xml-string" href="gupnp-av/GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-get-xml-string">
 <ANCHOR id="gupnp-didl-lite-object-set-update-id" href="gupnp-av/GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-set-update-id">
 <ANCHOR id="gupnp-didl-lite-object-unset-artists" href="gupnp-av/GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-unset-artists">
 <ANCHOR id="gupnp-didl-lite-object-unset-update-id" href="gupnp-av/GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-unset-update-id">
@@ -286,7 +287,6 @@
 <ANCHOR id="gupnp-av-GUPnPDIDLLiteCreateClass.synopsis" href="gupnp-av/gupnp-av-GUPnPDIDLLiteCreateClass.html#gupnp-av-GUPnPDIDLLiteCreateClass.synopsis">
 <ANCHOR id="gupnp-av-GUPnPDIDLLiteCreateClass.description" href="gupnp-av/gupnp-av-GUPnPDIDLLiteCreateClass.html#gupnp-av-GUPnPDIDLLiteCreateClass.description">
 <ANCHOR id="gupnp-av-GUPnPDIDLLiteCreateClass.details" href="gupnp-av/gupnp-av-GUPnPDIDLLiteCreateClass.html#gupnp-av-GUPnPDIDLLiteCreateClass.details">
-<ANCHOR id="GUPnPDIDLLiteCreateClass" href="gupnp-av/gupnp-av-GUPnPDIDLLiteCreateClass.html#GUPnPDIDLLiteCreateClass">
 <ANCHOR id="gupnp-didl-lite-create-class-get-content" href="gupnp-av/gupnp-av-GUPnPDIDLLiteCreateClass.html#gupnp-didl-lite-create-class-get-content">
 <ANCHOR id="gupnp-didl-lite-create-class-set-content" href="gupnp-av/gupnp-av-GUPnPDIDLLiteCreateClass.html#gupnp-didl-lite-create-class-set-content">
 <ANCHOR id="gupnp-didl-lite-create-class-get-include-derived" href="gupnp-av/gupnp-av-GUPnPDIDLLiteCreateClass.html#gupnp-didl-lite-create-class-get-include-derived">
@@ -311,6 +311,11 @@
 <ANCHOR id="GUPnPCDSLastChangeParser.details" href="gupnp-av/GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeParser.details">
 <ANCHOR id="GUPnPCDSLastChangeParser-struct" href="gupnp-av/GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeParser-struct">
 <ANCHOR id="GUPnPCDSLastChangeEvent" href="gupnp-av/GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEvent">
+<ANCHOR id="GUPNP-CDS-LAST-CHANGE-EVENT-INVALID:CAPS" href="gupnp-av/GUPnPCDSLastChangeParser.html#GUPNP-CDS-LAST-CHANGE-EVENT-INVALID:CAPS">
+<ANCHOR id="GUPNP-CDS-LAST-CHANGE-EVENT-OBJECT-ADDED:CAPS" href="gupnp-av/GUPnPCDSLastChangeParser.html#GUPNP-CDS-LAST-CHANGE-EVENT-OBJECT-ADDED:CAPS">
+<ANCHOR id="GUPNP-CDS-LAST-CHANGE-EVENT-OBJECT-REMOVED:CAPS" href="gupnp-av/GUPnPCDSLastChangeParser.html#GUPNP-CDS-LAST-CHANGE-EVENT-OBJECT-REMOVED:CAPS">
+<ANCHOR id="GUPNP-CDS-LAST-CHANGE-EVENT-OBJECT-MODIFIED:CAPS" href="gupnp-av/GUPnPCDSLastChangeParser.html#GUPNP-CDS-LAST-CHANGE-EVENT-OBJECT-MODIFIED:CAPS">
+<ANCHOR id="GUPNP-CDS-LAST-CHANGE-EVENT-ST-DONE:CAPS" href="gupnp-av/GUPnPCDSLastChangeParser.html#GUPNP-CDS-LAST-CHANGE-EVENT-ST-DONE:CAPS">
 <ANCHOR id="GUPnPCDSLastChangeEntry-struct" href="gupnp-av/GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEntry-struct">
 <ANCHOR id="gupnp-cds-last-change-parser-new" href="gupnp-av/GUPnPCDSLastChangeParser.html#gupnp-cds-last-change-parser-new">
 <ANCHOR id="gupnp-cds-last-change-parser-parse" href="gupnp-av/GUPnPCDSLastChangeParser.html#gupnp-cds-last-change-parser-parse">

@@ -7,7 +7,7 @@
 
 Name:       gupnp-av
 Summary:    GUPnP-AV is a collection of helpers for building UPnP AV applications
-Version:    0.12.0
+Version:    0.12.2
 Release:    0
 Group:      System/Libraries
 License:    LGPLv2+

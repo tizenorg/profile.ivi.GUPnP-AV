@@ -42,7 +42,7 @@ G_DEFINE_TYPE (GUPnPLastChangeParser,
                G_TYPE_OBJECT);
 
 static void
-gupnp_last_change_parser_init (GUPnPLastChangeParser *parser)
+gupnp_last_change_parser_init (G_GNUC_UNUSED GUPnPLastChangeParser *parser)
 {
 }
 
@@ -147,11 +147,11 @@ gupnp_last_change_parser_new (void)
  **/
 gboolean
 gupnp_last_change_parser_parse_last_change_valist
-                                       (GUPnPLastChangeParser *parser,
-                                        guint                  instance_id,
-                                        const char            *last_change_xml,
-                                        GError               **error,
-                                        va_list                var_args)
+                         (G_GNUC_UNUSED GUPnPLastChangeParser *parser,
+                          guint                                instance_id,
+                          const char                          *last_change_xml,
+                          GError                             **error,
+                          va_list                              var_args)
 {
         const char *variable_name;
         xmlDoc  *doc;
@@ -222,7 +222,7 @@ gupnp_last_change_parser_parse_last_change_valist
  * @instance_id: The ID of the AV instance caller is interested in
  * @last_change_xml: The xml from the "LastChange" event to parse
  * @error: The location where to store any error, or NULL
- * @Varargs: tuples of state variable name, state variable type, and state
+ * @...: tuples of state variable name, state variable type, and state
  * variable value location, terminated with NULL. The state variable values
  * should be freed after use.
  *

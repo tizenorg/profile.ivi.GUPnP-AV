@@ -91,6 +91,7 @@
     <keyword type="function" name="gupnp_didl_lite_object_get_track_number_xml_string ()" link="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-get-track-number-xml-string"/>
     <keyword type="function" name="gupnp_didl_lite_object_get_update_id ()" link="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-get-update-id"/>
     <keyword type="function" name="gupnp_didl_lite_object_get_upnp_class_xml_string ()" link="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-get-upnp-class-xml-string"/>
+    <keyword type="function" name="gupnp_didl_lite_object_get_xml_string ()" link="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-get-xml-string"/>
     <keyword type="function" name="gupnp_didl_lite_object_set_update_id ()" link="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-set-update-id"/>
     <keyword type="function" name="gupnp_didl_lite_object_unset_artists ()" link="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-unset-artists"/>
     <keyword type="function" name="gupnp_didl_lite_object_unset_update_id ()" link="GUPnPDIDLLiteObject.html#gupnp-didl-lite-object-unset-update-id"/>
@@ -239,7 +240,6 @@
     <keyword type="property" name="The &quot;role&quot; property" link="GUPnPDIDLLiteContributor.html#GUPnPDIDLLiteContributor--role"/>
     <keyword type="property" name="The &quot;xml-doc&quot; property" link="GUPnPDIDLLiteContributor.html#GUPnPDIDLLiteContributor--xml-doc"/>
     <keyword type="property" name="The &quot;xml-node&quot; property" link="GUPnPDIDLLiteContributor.html#GUPnPDIDLLiteContributor--xml-node"/>
-    <keyword type="struct" name="GUPnPDIDLLiteCreateClass" link="gupnp-av-GUPnPDIDLLiteCreateClass.html#GUPnPDIDLLiteCreateClass"/>
     <keyword type="function" name="gupnp_didl_lite_create_class_get_content ()" link="gupnp-av-GUPnPDIDLLiteCreateClass.html#gupnp-didl-lite-create-class-get-content"/>
     <keyword type="function" name="gupnp_didl_lite_create_class_set_content ()" link="gupnp-av-GUPnPDIDLLiteCreateClass.html#gupnp-didl-lite-create-class-set-content"/>
     <keyword type="function" name="gupnp_didl_lite_create_class_get_include_derived ()" link="gupnp-av-GUPnPDIDLLiteCreateClass.html#gupnp-didl-lite-create-class-get-include-derived"/>
@@ -349,6 +349,11 @@
     <keyword type="constant" name="GUPNP_DIDL_LITE_FRAGMENT_RESULT_READONLY_TAG" link="GUPnPDIDLLiteObject.html#GUPNP-DIDL-LITE-FRAGMENT-RESULT-READONLY-TAG:CAPS"/>
     <keyword type="constant" name="GUPNP_DIDL_LITE_FRAGMENT_RESULT_MISMATCH" link="GUPnPDIDLLiteObject.html#GUPNP-DIDL-LITE-FRAGMENT-RESULT-MISMATCH:CAPS"/>
     <keyword type="constant" name="GUPNP_DIDL_LITE_FRAGMENT_RESULT_UNKNOWN_ERROR" link="GUPnPDIDLLiteObject.html#GUPNP-DIDL-LITE-FRAGMENT-RESULT-UNKNOWN-ERROR:CAPS"/>
+    <keyword type="constant" name="GUPNP_CDS_LAST_CHANGE_EVENT_INVALID" link="GUPnPCDSLastChangeParser.html#GUPNP-CDS-LAST-CHANGE-EVENT-INVALID:CAPS"/>
+    <keyword type="constant" name="GUPNP_CDS_LAST_CHANGE_EVENT_OBJECT_ADDED" link="GUPnPCDSLastChangeParser.html#GUPNP-CDS-LAST-CHANGE-EVENT-OBJECT-ADDED:CAPS"/>
+    <keyword type="constant" name="GUPNP_CDS_LAST_CHANGE_EVENT_OBJECT_REMOVED" link="GUPnPCDSLastChangeParser.html#GUPNP-CDS-LAST-CHANGE-EVENT-OBJECT-REMOVED:CAPS"/>
+    <keyword type="constant" name="GUPNP_CDS_LAST_CHANGE_EVENT_OBJECT_MODIFIED" link="GUPnPCDSLastChangeParser.html#GUPNP-CDS-LAST-CHANGE-EVENT-OBJECT-MODIFIED:CAPS"/>
+    <keyword type="constant" name="GUPNP_CDS_LAST_CHANGE_EVENT_ST_DONE" link="GUPnPCDSLastChangeParser.html#GUPNP-CDS-LAST-CHANGE-EVENT-ST-DONE:CAPS"/>
     <keyword type="constant" name="GUPNP_SEARCH_CRITERIA_OP_EQ" link="GUPnPSearchCriteriaParser.html#GUPNP-SEARCH-CRITERIA-OP-EQ:CAPS"/>
     <keyword type="constant" name="GUPNP_SEARCH_CRITERIA_OP_NEQ" link="GUPnPSearchCriteriaParser.html#GUPNP-SEARCH-CRITERIA-OP-NEQ:CAPS"/>
     <keyword type="constant" name="GUPNP_SEARCH_CRITERIA_OP_LESS" link="GUPnPSearchCriteriaParser.html#GUPNP-SEARCH-CRITERIA-OP-LESS:CAPS"/>
