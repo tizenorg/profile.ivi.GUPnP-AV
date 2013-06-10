@@ -100,6 +100,40 @@ CDS's LastChange state variable.
         GUPNP_CDS_LAST_CHANGE_EVENT_ST_DONE
 } GUPnPCDSLastChangeEvent;
 </pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><a name="GUPNP-CDS-LAST-CHANGE-EVENT-INVALID:CAPS"></a><span class="term"><code class="literal">GUPNP_CDS_LAST_CHANGE_EVENT_INVALID</code></span></p></td>
+<td>Invalid <a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEntry"><span class="type">GUPnPCDSLastChangeEntry</span></a>.
+</td>
+</tr>
+<tr>
+<td><p><a name="GUPNP-CDS-LAST-CHANGE-EVENT-OBJECT-ADDED:CAPS"></a><span class="term"><code class="literal">GUPNP_CDS_LAST_CHANGE_EVENT_OBJECT_ADDED</code></span></p></td>
+<td>The <a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEntry"><span class="type">GUPnPCDSLastChangeEntry</span></a> is
+an object added event.
+</td>
+</tr>
+<tr>
+<td><p><a name="GUPNP-CDS-LAST-CHANGE-EVENT-OBJECT-REMOVED:CAPS"></a><span class="term"><code class="literal">GUPNP_CDS_LAST_CHANGE_EVENT_OBJECT_REMOVED</code></span></p></td>
+<td>The <a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEntry"><span class="type">GUPnPCDSLastChangeEntry</span></a>
+is an object removal event.
+</td>
+</tr>
+<tr>
+<td><p><a name="GUPNP-CDS-LAST-CHANGE-EVENT-OBJECT-MODIFIED:CAPS"></a><span class="term"><code class="literal">GUPNP_CDS_LAST_CHANGE_EVENT_OBJECT_MODIFIED</code></span></p></td>
+<td>The <a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEntry"><span class="type">GUPnPCDSLastChangeEntry</span></a>
+is an object modification event.
+</td>
+</tr>
+<tr>
+<td><p><a name="GUPNP-CDS-LAST-CHANGE-EVENT-ST-DONE:CAPS"></a><span class="term"><code class="literal">GUPNP_CDS_LAST_CHANGE_EVENT_ST_DONE</code></span></p></td>
+<td>The <a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEntry"><span class="type">GUPnPCDSLastChangeEntry</span></a> is a
+subtree update done event.
+</td>
+</tr>
+</tbody>
+</table></div>
 </div>
 <hr>
 <div class="refsect2">
@@ -224,7 +258,7 @@ Get the type of the last change entry as defined in
 <tr>
 <td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
 <td>An event from the <a class="link" href="GUPnPCDSLastChangeParser.html#GUPnPCDSLastChangeEvent" title="enum GUPnPCDSLastChangeEvent"><span class="type">GUPnPCDSLastChangeEvent</span></a> or
-<code class="literal">GUPNP_CDS_LAST_CHANGE_EVENT_INVALID</code> if the entry is not valid.</td>
+<a class="link" href="GUPnPCDSLastChangeParser.html#GUPNP-CDS-LAST-CHANGE-EVENT-INVALID:CAPS"><code class="literal">GUPNP_CDS_LAST_CHANGE_EVENT_INVALID</code></a> if the entry is not valid.</td>
 </tr>
 </tbody>
 </table></div>
@@ -261,7 +295,7 @@ Get the ID of the object in this change entry.
 <p>
 Get the parent object id of the object in this change entry. This is only
 valid if <a class="link" href="GUPnPCDSLastChangeParser.html#gupnp-cds-last-change-entry-get-event" title="gupnp_cds_last_change_entry_get_event ()"><code class="function">gupnp_cds_last_change_entry_get_event()</code></a> returns
-<code class="literal">GUPNP_CDS_LAST_CHANGE_EVENT_OBJECT_ADDED</code>.
+<a class="link" href="GUPnPCDSLastChangeParser.html#GUPNP-CDS-LAST-CHANGE-EVENT-OBJECT-ADDED:CAPS"><code class="literal">GUPNP_CDS_LAST_CHANGE_EVENT_OBJECT_ADDED</code></a>.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
@@ -287,7 +321,7 @@ valid if <a class="link" href="GUPnPCDSLastChangeParser.html#gupnp-cds-last-chan
 <p>
 Get the class of the object in this change entry. This is only
 valid if <a class="link" href="GUPnPCDSLastChangeParser.html#gupnp-cds-last-change-entry-get-event" title="gupnp_cds_last_change_entry_get_event ()"><code class="function">gupnp_cds_last_change_entry_get_event()</code></a> returns
-<code class="literal">GUPNP_CDS_LAST_CHANGE_EVENT_OBJECT_ADDED</code>.
+<a class="link" href="GUPnPCDSLastChangeParser.html#GUPNP-CDS-LAST-CHANGE-EVENT-OBJECT-ADDED:CAPS"><code class="literal">GUPNP_CDS_LAST_CHANGE_EVENT_OBJECT_ADDED</code></a>.
 </p>
 <div class="variablelist"><table border="0">
 <col align="left" valign="top">
