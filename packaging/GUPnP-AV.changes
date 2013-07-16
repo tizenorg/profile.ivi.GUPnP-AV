@@ -1,3 +1,6 @@
+* Tue Jul 16 00:08:13 UTC 2013 - tracy.graydon@intel.com
+- Stripped the old yaml cruft from the spec file 
+
 * Tue Jun 11 2013 Regis Merlino <regis.merlino@intel.com>
 - Update gupnp-av to 0.12.2 (1a991fe)
 
