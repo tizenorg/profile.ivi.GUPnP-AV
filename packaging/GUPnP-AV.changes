@@ -1,3 +1,6 @@
+* Wed Nov 20 2013 Jussi Kukkonen <jussi.kukkonen@intel.com>
+- Update gupnp-av-0.12.4
+
 * Tue Jul 16 00:08:13 UTC 2013 - tracy.graydon@intel.com
 - Stripped the old yaml cruft from the spec file 
 
