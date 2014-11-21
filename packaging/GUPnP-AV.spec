@@ -1,12 +1,12 @@
 Name:       gupnp-av
 Summary:    GUPnP-AV is a collection of helpers for building UPnP AV applications
-Version:    0.12.4
+Version:    0.12.6
 Release:    0
 Group:      System/Libraries
-License:    LGPLv2+
+License:    LGPL-2.0+
 URL:        http://www.gupnp.org/
-Source0:    http://download.gnome.org/sources/%{name}/0.12/%{name}-%{version}.tar.gz
-Requires(post): /sbin/ldconfig
+Source0:    http://download.gnome.org/sources/%{name}/0.12/%{name}-%{version}.tar.xz
+Requires(post):   /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
 BuildRequires:  pkgconfig(gupnp-1.0)
 BuildRequires:  pkgconfig(glib-2.0)
@@ -38,13 +38,13 @@ Files for development with gupnp-av.
 
 %build
 %configure --disable-static
-make %{?jobs:-j%jobs}
+%__make %{?jobs:-j%jobs}
 
 %install
 rm -rf %{buildroot}
 %make_install
 
-rm -rf  $RPM_BUILD_ROOT%{_datadir}/gtk-doc
+rm -rf %{buildroot}%{_datadir}/gtk-doc
 
 %post -p /sbin/ldconfig
 
@@ -52,7 +52,8 @@ rm -rf  $RPM_BUILD_ROOT%{_datadir}/gtk-doc
 
 %files
 %defattr(-,root,root,-)
-%doc AUTHORS COPYING README
+%doc AUTHORS README
+%license COPYING
 %{_libdir}/*.so.*
 %{_datadir}/gupnp-av/*.xsd
 
@@ -65,4 +66,3 @@ rm -rf  $RPM_BUILD_ROOT%{_datadir}/gtk-doc
 %{_datadir}/gir-1.0/GUPnPAV-1.0.gir
 %{_datadir}/vala/vapi/gupnp-av-1.0.deps
 %{_datadir}/vala/vapi/gupnp-av-1.0.vapi
-
